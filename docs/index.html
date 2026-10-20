@@ -579,62 +579,68 @@ Ele é subtraído de <span class="math inline">\(\log(Y_{\text{base}})\)</span>,
 <div class="scenario-grid">
 <div class="scenario-card scenario-red">
 <div class="scenario-title">
-🔴 Cenário 1: Norte de Minas Gerais
+🔴 Norte de Minas
 </div>
 <div class="scenario-subtitle">
-Região de Penalidade Severa (Tom Vermelho)
+Penalidade Climática Severa (Tom Vermelho no Mapa)
 </div>
 <ul>
-<li><strong>Condições Climáticas Locais:</strong>
+<li><strong>Médias Zonais Observadas (Pastagens):</strong>
 <ul>
-<li><span class="math inline">\(\Delta \text{ITU} = +70\text{ dias}\)</span> acima da média regional</li>
-<li><span class="math inline">\(\Delta \text{Chuva} = -300\text{ mm}\)</span> abaixo da média regional</li>
+<li><strong>Calor Crítico:</strong> <span class="math inline">\(79,2\text{ dias/ano}\)</span> com <span class="math inline">\(\text{ITU} &gt; 79\)</span> (<span class="math inline">\(\Delta \text{ITU} = +18,9\text{ dias}\)</span> acima da média regional de <span class="math inline">\(60,3\text{ dias}\)</span>)</li>
+<li><strong>Precipitação Anual:</strong> <span class="math inline">\(931\text{ mm/ano}\)</span> (<span class="math inline">\(\Delta \text{Chuva} = -275\text{ mm}\)</span> abaixo da média regional de <span class="math inline">\(1.206\text{ mm}\)</span>)</li>
+<li><strong>Produtividade Base:</strong> <span class="math inline">\(1.200,0\text{ L/vaca/ano}\)</span></li>
 </ul></li>
 </ul>
 <div class="math-step">
 <p><span class="math display">\[\begin{aligned}
-\Delta \log(Y) &amp;= (-0,00282 \times 70) + (0,000117 \times (-300)) \\
-&amp;= -0,1974 - 0,0351 = -0,2325
+\Delta \log(Y) &amp;= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
+&amp;= (-0,00282 \times 18,9) + (0,000117 \times (-275)) \\
+&amp;= -0,0533 - 0,0322 = -0,0855
 \end{aligned}\]</span></p>
 </div>
 <div class="math-step">
 <p><span class="math display">\[\begin{aligned}
-\Delta\% &amp;= (\exp(-0,2325) - 1) \times 100 \\
-&amp;\approx -20,75\%
+\Delta\%_{\text{líquido}} &amp;= (\exp(-0,0855) - 1) \times 100 \approx \mathbf{-8,20\%} \\
+&amp;(\text{Média Zonal ponderada pixel a pixel: } \mathbf{-7,84\%})
 \end{aligned}\]</span></p>
 </div>
 <ul>
-<li><strong>Comportamento no Modelo:</strong> Valor de <strong><span class="math inline">\(\approx -21\%\)</span></strong> nos pixels mais quentes (e média mesorregional de <span class="math inline">\(-7,84\%\)</span>), indicando severa perda de rendimento por estresse térmico somado a déficit hídrico.</li>
+<li><p><strong>Perda Física Estimada (Equação 4):</strong> <span class="math display">\[\text{Perda} = 1.200,0 \times \Big(1 - \exp(-0,00282 \times 79,2)\Big) = \mathbf{233,2\text{ L/vaca/ano}}\]</span></p></li>
+<li><p><strong>Diagnóstico no Modelo:</strong> A combinação de estresse térmico severo e déficit hídrico gera um balanço climático líquido desfavorável de <strong><span class="math inline">\(-7,84\%\)</span></strong>, com perda de <strong><span class="math inline">\(233,2\text{ L/vaca/ano}\)</span></strong> (<span class="math inline">\(\approx 19,4\%\)</span> da produtividade potencial).</p></li>
 </ul>
 </div>
 <div class="scenario-card scenario-blue">
 <div class="scenario-title">
-🔵 Cenário 2: Sul de Minas / Mantiqueira
+🔵 Sul / Sudoeste de Minas
 </div>
 <div class="scenario-subtitle">
-Região de Refúgio Térmico (Tom Azul)
+Refúgio Térmico e Alta Aptidão (Tom Azul no Mapa)
 </div>
 <ul>
-<li><strong>Condições Climáticas Locais:</strong>
+<li><strong>Médias Zonais Observadas (Pastagens):</strong>
 <ul>
-<li><span class="math inline">\(\Delta \text{ITU} = -40\text{ dias}\)</span> (praticamente isento de calor crítico)</li>
-<li><span class="math inline">\(\Delta \text{Chuva} = +200\text{ mm}\)</span> acima da média regional</li>
+<li><strong>Calor Crítico:</strong> <span class="math inline">\(15,8\text{ dias/ano}\)</span> com <span class="math inline">\(\text{ITU} &gt; 79\)</span> (<span class="math inline">\(\Delta \text{ITU} = -44,5\text{ dias}\)</span> abaixo da média regional de <span class="math inline">\(60,3\text{ dias}\)</span>)</li>
+<li><strong>Precipitação Anual:</strong> <span class="math inline">\(1.392\text{ mm/ano}\)</span> (<span class="math inline">\(\Delta \text{Chuva} = +186\text{ mm}\)</span> acima da média regional de <span class="math inline">\(1.206\text{ mm}\)</span>)</li>
+<li><strong>Produtividade Base:</strong> <span class="math inline">\(2.368,2\text{ L/vaca/ano}\)</span></li>
 </ul></li>
 </ul>
 <div class="math-step">
 <p><span class="math display">\[\begin{aligned}
-\Delta \log(Y) &amp;= (-0,00282 \times (-40)) + (0,000117 \times 200) \\
-&amp;= +0,1128 + 0,0234 = +0,1362
+\Delta \log(Y) &amp;= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
+&amp;= (-0,00282 \times (-44,5)) + (0,000117 \times 186) \\
+&amp;= +0,1255 + 0,0218 = +0,1473
 \end{aligned}\]</span></p>
 </div>
 <div class="math-step">
 <p><span class="math display">\[\begin{aligned}
-\Delta\% &amp;= (\exp(0,1362) - 1) \times 100 \\
-&amp;\approx +14,59\%
+\Delta\%_{\text{líquido}} &amp;= (\exp(+0,1473) - 1) \times 100 \approx \mathbf{+15,87\%} \\
+&amp;(\text{Média Zonal ponderada pixel a pixel: } \mathbf{+15,88\%})
 \end{aligned}\]</span></p>
 </div>
 <ul>
-<li><strong>Comportamento no Modelo:</strong> Valor de <strong><span class="math inline">\(+14,6\%\)</span></strong> (e média mesorregional de <span class="math inline">\(+15,88\%\)</span>), representando expressiva vantagem bioclimática líquida para produção leiteira a pasto.</li>
+<li><p><strong>Perda Física Estimada (Equação 4):</strong> <span class="math display">\[\text{Perda} = 2.368,2 \times \Big(1 - \exp(-0,00282 \times 15,8)\Big) = \mathbf{104,6\text{ L/vaca/ano}}\]</span></p></li>
+<li><p><strong>Diagnóstico no Modelo:</strong> A reduzida frequência de estresse por calor combinada a chuvas regulares resulta em vantagem bioclimática líquida de <strong><span class="math inline">\(+15,88\%\)</span></strong>, com perda térmica residual de apenas <strong><span class="math inline">\(104,6\text{ L/vaca/ano}\)</span></strong> (<span class="math inline">\(\approx 4,4\%\)</span> da produção).</p></li>
 </ul>
 </div>
 </div>

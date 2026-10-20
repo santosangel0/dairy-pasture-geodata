@@ -368,10 +368,10 @@ document.addEventListener('DOMContentLoaded', function () {{
                     zIndex: 5,
                     label: {{
                         text: 'Média Regional (0%)',
-                        align: 'right',
-                        verticalAlign: 'middle',
+                        align: 'left',
+                        verticalAlign: 'top',
                         x: 8,
-                        y: -60,
+                        y: 280,
                         style: {{
                             color: '#2b6cb0',
                             fontWeight: 'bold',
