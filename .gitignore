@@ -2,7 +2,10 @@
 **/*.quarto_ipynb
 
 # Dados no Google Drive (Directory Junction) e arquivos pesados
-/data/
+/data/*
+!/data/README.md
+!/data/**/README.md
+
 *.parquet
 *.tif
 *.tiff
