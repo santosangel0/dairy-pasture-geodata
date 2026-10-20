@@ -207,7 +207,7 @@ O coeficiente da chuva é menor na quarta casa decimal porque atua sobre centena
 
 ---
 
-# Da Econometria à Perda Física de Leite (Equação 4)
+# Perda Física Estimada de Leite
 
 Conectando o **modelo econométrico original da Nota Técnica** com a álgebra do raster, podemos acompanhar essa expressão sem nenhum salto lógico:
 
@@ -319,70 +319,6 @@ A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterog
 
 ::: {.highcharts-container-box}
 <div id="chart-perda-absoluta"></div>
-:::
-
-:::
-
-::: {.scenario-grid}
-
-::: {.scenario-card .scenario-red}
-<div class="scenario-title">🔴 Norte de Minas</div>
-<div class="scenario-subtitle">Penalidade Climática Severa (Tom Vermelho no Mapa)</div>
-
-* **Médias Zonais Observadas (Pastagens):**
-  * **Calor Crítico:** $79,2\text{ dias/ano}$ com $\text{ITU} > 79$ ($\Delta \text{ITU} = +18,9\text{ dias}$ acima da média regional de $60,3\text{ dias}$)
-  * **Precipitação Anual:** $931\text{ mm/ano}$ ($\Delta \text{Chuva} = -275\text{ mm}$ abaixo da média regional de $1.206\text{ mm}$)
-  * **Produtividade Base:** $1.200,0\text{ L/vaca/ano}$
-
-::: {.math-step}
-$$\begin{aligned}
-\Delta \log(Y) &= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
-&= (-0,00282 \times 18,9) + (0,000117 \times (-275)) \\
-&= -0,0533 - 0,0322 = -0,0855
-\end{aligned}$$
-:::
-
-::: {.math-step}
-$$\begin{aligned}
-\Delta\%_{\text{líquido}} &= (\exp(-0,0855) - 1) \times 100 \approx \mathbf{-8,20\%} \\
-&(\text{Média Zonal ponderada pixel a pixel: } \mathbf{-7,84\%})
-\end{aligned}$$
-:::
-
-* **Perda Física Estimada (Equação 4):**
-$$\text{Perda} = 1.200,0 \times \Big(1 - \exp(-0,00282 \times 79,2)\Big) = \mathbf{233,2\text{ L/vaca/ano}}$$
-
-* **Diagnóstico no Modelo:** A combinação de estresse térmico severo e déficit hídrico gera um balanço climático líquido desfavorável de **$-7,84\%$**, com perda de **$233,2\text{ L/vaca/ano}$** ($\approx 19,4\%$ da produtividade potencial).
-:::
-
-::: {.scenario-card .scenario-blue}
-<div class="scenario-title">🔵 Sul / Sudoeste de Minas</div>
-<div class="scenario-subtitle">Refúgio Térmico e Alta Aptidão (Tom Azul no Mapa)</div>
-
-* **Médias Zonais Observadas (Pastagens):**
-  * **Calor Crítico:** $15,8\text{ dias/ano}$ com $\text{ITU} > 79$ ($\Delta \text{ITU} = -44,5\text{ dias}$ abaixo da média regional de $60,3\text{ dias}$)
-  * **Precipitação Anual:** $1.392\text{ mm/ano}$ ($\Delta \text{Chuva} = +186\text{ mm}$ acima da média regional de $1.206\text{ mm}$)
-  * **Produtividade Base:** $2.368,2\text{ L/vaca/ano}$
-
-::: {.math-step}
-$$\begin{aligned}
-\Delta \log(Y) &= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
-&= (-0,00282 \times (-44,5)) + (0,000117 \times 186) \\
-&= +0,1255 + 0,0218 = +0,1473
-\end{aligned}$$
-:::
-
-::: {.math-step}
-$$\begin{aligned}
-\Delta\%_{\text{líquido}} &= (\exp(+0,1473) - 1) \times 100 \approx \mathbf{+15,87\%} \\
-&(\text{Média Zonal ponderada pixel a pixel: } \mathbf{+15,88\%})
-\end{aligned}$$
-:::
-
-* **Perda Física Estimada (Equação 4):**
-$$\text{Perda} = 2.368,2 \times \Big(1 - \exp(-0,00282 \times 15,8)\Big) = \mathbf{104,6\text{ L/vaca/ano}}$$
-
-* **Diagnóstico no Modelo:** A reduzida frequência de estresse por calor combinada a chuvas regulares resulta em vantagem bioclimática líquida de **$+15,88\%$**, com perda térmica residual de apenas **$104,6\text{ L/vaca/ano}$** ($\approx 4,4\%$ da produção).
 :::
 
 :::

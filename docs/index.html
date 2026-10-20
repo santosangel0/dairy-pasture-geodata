@@ -215,7 +215,7 @@ window.Quarto = {
   <li><a href="#a.-escala-do-calor-r_textitu" id="toc-a.-escala-do-calor-r_textitu" class="nav-link" data-scroll-target="#a.-escala-do-calor-r_textitu"><span class="header-section-number">4.0.1</span> A. Escala do Calor (<span class="math inline">\(R_{\text{ITU}}\)</span>)</a></li>
   <li><a href="#b.-escala-da-chuva-r_textchuva" id="toc-b.-escala-da-chuva-r_textchuva" class="nav-link" data-scroll-target="#b.-escala-da-chuva-r_textchuva"><span class="header-section-number">4.0.2</span> B. Escala da Chuva (<span class="math inline">\(R_{\text{Chuva}}\)</span>)</a></li>
   </ul></li>
-  <li><a href="#da-econometria-à-perda-física-de-leite-equação-4" id="toc-da-econometria-à-perda-física-de-leite-equação-4" class="nav-link" data-scroll-target="#da-econometria-à-perda-física-de-leite-equação-4"><span class="header-section-number">5</span> Da Econometria à Perda Física de Leite (Equação 4)</a>
+  <li><a href="#perda-física-estimada-de-leite" id="toc-perda-física-estimada-de-leite" class="nav-link" data-scroll-target="#perda-física-estimada-de-leite"><span class="header-section-number">5</span> Perda Física Estimada de Leite</a>
   <ul class="collapse">
   <li><a href="#relembrando-o-modelo-econométrico-geral" id="toc-relembrando-o-modelo-econométrico-geral" class="nav-link" data-scroll-target="#relembrando-o-modelo-econométrico-geral">Relembrando o Modelo Econométrico Geral</a></li>
   <li><a href="#a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor" id="toc-a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor" class="nav-link" data-scroll-target="#a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor">A Decomposição em Duas Partes: A “Base” e o “Choque do Calor”</a></li>
@@ -473,8 +473,8 @@ Note
 <hr>
 </section>
 </section>
-<section id="da-econometria-à-perda-física-de-leite-equação-4" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Da Econometria à Perda Física de Leite (Equação 4)</h1>
+<section id="perda-física-estimada-de-leite" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Perda Física Estimada de Leite</h1>
 <p>Conectando o <strong>modelo econométrico original da Nota Técnica</strong> com a álgebra do raster, podemos acompanhar essa expressão sem nenhum salto lógico:</p>
 <hr>
 <section id="relembrando-o-modelo-econométrico-geral" class="level3 unnumbered">
@@ -574,74 +574,6 @@ Ele é subtraído de <span class="math inline">\(\log(Y_{\text{base}})\)</span>,
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="scenario-grid">
-<div class="scenario-card scenario-red">
-<div class="scenario-title">
-🔴 Norte de Minas
-</div>
-<div class="scenario-subtitle">
-Penalidade Climática Severa (Tom Vermelho no Mapa)
-</div>
-<ul>
-<li><strong>Médias Zonais Observadas (Pastagens):</strong>
-<ul>
-<li><strong>Calor Crítico:</strong> <span class="math inline">\(79,2\text{ dias/ano}\)</span> com <span class="math inline">\(\text{ITU} &gt; 79\)</span> (<span class="math inline">\(\Delta \text{ITU} = +18,9\text{ dias}\)</span> acima da média regional de <span class="math inline">\(60,3\text{ dias}\)</span>)</li>
-<li><strong>Precipitação Anual:</strong> <span class="math inline">\(931\text{ mm/ano}\)</span> (<span class="math inline">\(\Delta \text{Chuva} = -275\text{ mm}\)</span> abaixo da média regional de <span class="math inline">\(1.206\text{ mm}\)</span>)</li>
-<li><strong>Produtividade Base:</strong> <span class="math inline">\(1.200,0\text{ L/vaca/ano}\)</span></li>
-</ul></li>
-</ul>
-<div class="math-step">
-<p><span class="math display">\[\begin{aligned}
-\Delta \log(Y) &amp;= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
-&amp;= (-0,00282 \times 18,9) + (0,000117 \times (-275)) \\
-&amp;= -0,0533 - 0,0322 = -0,0855
-\end{aligned}\]</span></p>
-</div>
-<div class="math-step">
-<p><span class="math display">\[\begin{aligned}
-\Delta\%_{\text{líquido}} &amp;= (\exp(-0,0855) - 1) \times 100 \approx \mathbf{-8,20\%} \\
-&amp;(\text{Média Zonal ponderada pixel a pixel: } \mathbf{-7,84\%})
-\end{aligned}\]</span></p>
-</div>
-<ul>
-<li><p><strong>Perda Física Estimada (Equação 4):</strong> <span class="math display">\[\text{Perda} = 1.200,0 \times \Big(1 - \exp(-0,00282 \times 79,2)\Big) = \mathbf{233,2\text{ L/vaca/ano}}\]</span></p></li>
-<li><p><strong>Diagnóstico no Modelo:</strong> A combinação de estresse térmico severo e déficit hídrico gera um balanço climático líquido desfavorável de <strong><span class="math inline">\(-7,84\%\)</span></strong>, com perda de <strong><span class="math inline">\(233,2\text{ L/vaca/ano}\)</span></strong> (<span class="math inline">\(\approx 19,4\%\)</span> da produtividade potencial).</p></li>
-</ul>
-</div>
-<div class="scenario-card scenario-blue">
-<div class="scenario-title">
-🔵 Sul / Sudoeste de Minas
-</div>
-<div class="scenario-subtitle">
-Refúgio Térmico e Alta Aptidão (Tom Azul no Mapa)
-</div>
-<ul>
-<li><strong>Médias Zonais Observadas (Pastagens):</strong>
-<ul>
-<li><strong>Calor Crítico:</strong> <span class="math inline">\(15,8\text{ dias/ano}\)</span> com <span class="math inline">\(\text{ITU} &gt; 79\)</span> (<span class="math inline">\(\Delta \text{ITU} = -44,5\text{ dias}\)</span> abaixo da média regional de <span class="math inline">\(60,3\text{ dias}\)</span>)</li>
-<li><strong>Precipitação Anual:</strong> <span class="math inline">\(1.392\text{ mm/ano}\)</span> (<span class="math inline">\(\Delta \text{Chuva} = +186\text{ mm}\)</span> acima da média regional de <span class="math inline">\(1.206\text{ mm}\)</span>)</li>
-<li><strong>Produtividade Base:</strong> <span class="math inline">\(2.368,2\text{ L/vaca/ano}\)</span></li>
-</ul></li>
-</ul>
-<div class="math-step">
-<p><span class="math display">\[\begin{aligned}
-\Delta \log(Y) &amp;= \beta_{\text{calor}} \cdot \Delta \text{ITU} + \beta_{\text{chuva}} \cdot \Delta \text{Chuva} \\
-&amp;= (-0,00282 \times (-44,5)) + (0,000117 \times 186) \\
-&amp;= +0,1255 + 0,0218 = +0,1473
-\end{aligned}\]</span></p>
-</div>
-<div class="math-step">
-<p><span class="math display">\[\begin{aligned}
-\Delta\%_{\text{líquido}} &amp;= (\exp(+0,1473) - 1) \times 100 \approx \mathbf{+15,87\%} \\
-&amp;(\text{Média Zonal ponderada pixel a pixel: } \mathbf{+15,88\%})
-\end{aligned}\]</span></p>
-</div>
-<ul>
-<li><p><strong>Perda Física Estimada (Equação 4):</strong> <span class="math display">\[\text{Perda} = 2.368,2 \times \Big(1 - \exp(-0,00282 \times 15,8)\Big) = \mathbf{104,6\text{ L/vaca/ano}}\]</span></p></li>
-<li><p><strong>Diagnóstico no Modelo:</strong> A reduzida frequência de estresse por calor combinada a chuvas regulares resulta em vantagem bioclimática líquida de <strong><span class="math inline">\(+15,88\%\)</span></strong>, com perda térmica residual de apenas <strong><span class="math inline">\(104,6\text{ L/vaca/ano}\)</span></strong> (<span class="math inline">\(\approx 4,4\%\)</span> da produção).</p></li>
-</ul>
 </div>
 </div>
 <hr>

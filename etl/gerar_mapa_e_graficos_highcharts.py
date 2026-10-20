@@ -365,23 +365,7 @@ document.addEventListener('DOMContentLoaded', function () {{
                     value: 0,
                     color: '#2b6cb0',
                     width: 2,
-                    zIndex: 5,
-                    label: {{
-                        text: 'Média Regional (0%)',
-                        align: 'left',
-                        verticalAlign: 'top',
-                        x: 8,
-                        y: 280,
-                        style: {{
-                            color: '#2b6cb0',
-                            fontWeight: 'bold',
-                            fontSize: '11px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                            padding: '3px 6px',
-                            borderRadius: '3px',
-                            border: '1px solid #cbd5e0'
-                        }}
-                    }}
+                    zIndex: 5
                 }}]
             }},
             legend: {{
