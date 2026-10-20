@@ -11,7 +11,7 @@ format:
     code-summary: "Exibir Código Python"
 ---
 
-# 1. O Modelo Econométrico de Painel
+# O Modelo Econométrico de Painel
 
 A base estrutural da pesquisa fundamenta-se em um modelo econométrico de dados em painel com efeitos fixos bidirecionais (município e ano), cobrindo o período de 2008 a 2023 em toda a Região Sudeste do Brasil:
 
@@ -28,7 +28,7 @@ $$\log(Y_{it}) = \alpha_i + \gamma_t + \beta_{\text{calor}} \cdot \text{ITU}_{it
 
 A inclusão dos dois conjuntos de interceptos ($\alpha_i$ e $\gamma_t$) assegura a consistência dos estimadores econométricos, neutralizando potenciais fontes de viés de variável omitida:
 
-### 1. Intercepto de Município ($\alpha_i$ - Efeito Fixo Municipal)
+### Intercepto de Município ($\alpha_i$ - Efeito Fixo Municipal)
 O termo $\alpha_i$ representa um intercepto específico para cada município $i$, constante ao longo dos anos. Ele absorve toda a **heterogeneidade espacial não observada e invariante no tempo**, incluindo:
 
 * **Fatores Físicos e Geográficos:** Relevo, tipos de solo, declividade e altitude média municipal.
@@ -38,7 +38,7 @@ O termo $\alpha_i$ representa um intercepto específico para cada município $i$
 **Importância:** Sem o $\alpha_i$, um município mais produtivo devido à qualidade de seus solos ou tradição zootécnica poderia ter seu desempenho erroneamente atribuído ao clima. O intercepto $\alpha_i$ controla essas diferenças fixas entre localidades.
 :::
 
-### 2. Intercepto de Tempo ($\gamma_t$ - Efeito Fixo Temporal / Ano)
+### Intercepto de Tempo ($\gamma_t$ - Efeito Fixo Temporal / Ano)
 O termo $\gamma_t$ representa um intercepto comum a todos os municípios em cada ano $t$. Ele captura **choques conjunturais e macroeconômicos agregados** que afetam o setor leiteiro como um todo em determinado ano:
 
 * **Preços e Custos de Produção:** Variações anuais no preço médio do leite e oscilações nos preços de insumos concentrados (milho e farelo de soja).
@@ -55,7 +55,7 @@ Como os efeitos fixos ($\alpha_i$ e $\gamma_t$) eliminam essas variáveis de con
 
 ## Explicação dos Betas
 
-Para entender de forma amigável o significado dos coeficientes $\beta$, podemos usar a **Regra da Cadeia** e uma simples **análise dimensional**. A ideia aqui é apenas facilitar a compreensão, mostrando de maneira direta como a unidade física de produção se cancela e dá lugar a uma taxa percentual:
+O significado dos coeficientes $\beta$ pode ser compreendido usando a **Regra da Cadeia** e uma simples **análise dimensional**, mostrando de maneira direta como a unidade física de produção se cancela e dá lugar a uma taxa percentual:
 
 ### A. Definição das Variáveis e Unidades Físicas
 
@@ -125,7 +125,7 @@ Como estimado estruturalmente, $\beta_{\text{calor}} = -0,00282\ (\text{dias de 
 
 ---
 
-# 2. Fontes de Dados, Escalas e Resoluções Espaciais
+# Fontes de Dados, Escalas e Resoluções Espaciais
 
 Todos os dados foram espacializados e harmonizados para a mesma grade geográfica contínua sobre as pastagens do Sudeste:
 
@@ -144,7 +144,7 @@ Todos os dados foram espacializados e harmonizados para a mesma grade geográfic
 
 ---
 
-# 3. A Álgebra de Mapas e a Derivação da Equação 3
+# A Álgebra de Mapas e a Derivação da Equação 3
 
 Com os coeficientes $\beta$ estruturais estimados, a taxa percentual de impacto climático líquido sobre cada célula forrageira $x = (\text{lon}, \text{lat})$ é modelada pela **Equação 3**:
 
@@ -180,7 +180,7 @@ Assim, cada pixel $x$ reflete diretamente se o seu clima particular gera vantage
 
 ---
 
-# 4. As Escalas e as Ordens de Grandeza (Os Coeficientes $\beta$)
+# As Escalas e as Ordens de Grandeza (Os Coeficientes $\beta$)
 
 Observe a magnitude dos coeficientes estruturais:
 
@@ -207,13 +207,13 @@ O coeficiente da chuva é menor na quarta casa decimal porque atua sobre centena
 
 ---
 
-# 5. Da Econometria à Perda Física de Leite (Equação 4)
+# Da Econometria à Perda Física de Leite (Equação 4)
 
-Para você se sentir 100% confortável, vamos olhar para essa expressão sem nenhum salto lógico, conectando o **modelo econométrico original da Nota Técnica** com a álgebra do raster.
+Conectando o **modelo econométrico original da Nota Técnica** com a álgebra do raster, podemos acompanhar essa expressão sem nenhum salto lógico:
 
 ---
 
-### 1. Relembrando o Modelo Econométrico Geral {.unnumbered}
+### Relembrando o Modelo Econométrico Geral {.unnumbered}
 
 A equação geral estimada na Seção 2.1 da Nota Técnica é:
 
@@ -227,7 +227,7 @@ Para isolar o efeito marginal do calor de forma pura, os demais fatores estrutur
 
 ---
 
-### 2. A Decomposição em Duas Partes: A "Base" e o "Choque do Calor" {.unnumbered}
+### A Decomposição em Duas Partes: A "Base" e o "Choque do Calor" {.unnumbered}
 
 Pense na produtividade $\log(Y)$ daquele pixel como a soma de dois blocos:
 
@@ -239,7 +239,7 @@ $$\log(Y) = \log(Y_{\text{base}}) + \beta_{\text{calor}} \cdot R_{\text{ITU}}$$
 
 ---
 
-### 3. O que acontece quando $R_{\text{ITU}} = 0$? (O Teste dos Extremos) {.unnumbered}
+### O que acontece quando $R_{\text{ITU}} = 0$? (O Teste dos Extremos) {.unnumbered}
 
 Faça o teste prático dessa equação:
 
@@ -257,7 +257,7 @@ Ele é subtraído de $\log(Y_{\text{base}})$, fazendo com que $\log(Y)$ fique me
 
 ---
 
-### 4. A Ponte para a Fração Exponencial {.unnumbered}
+### A Ponte para a Fração Exponencial {.unnumbered}
 
 Agora veja como a álgebra se resolve de forma limpa:
 
@@ -291,7 +291,7 @@ Essa é exatamente a Equação 4 descrita no relatório.
 
 ---
 
-# 6. Aplicação Prática e Zoneamento por Mesorregiões
+# Aplicação Prática e Zoneamento por Mesorregiões
 
 A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**. 
 
@@ -381,7 +381,7 @@ $$\begin{aligned}
 
 ---
 
-# 7. Implementação Vetorizada em Python
+# Implementação Vetorizada em Python
 
 No pipeline de dados, a álgebra de mapas da Equação 3 é executada em matrizes contínuas com **Python** (`numpy` e `rasterio`):
 

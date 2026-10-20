@@ -340,7 +340,8 @@ document.addEventListener('DOMContentLoaded', function () {{
             }},
             title: {{
                 text: 'Ranking do Balanço Climático Líquido (Δ%) por Mesorregião',
-                style: {{ color: '#1a365d', fontWeight: 'bold', fontSize: '1.25rem' }}
+                style: {{ color: '#1a365d', fontWeight: 'bold', fontSize: '1.25rem' }},
+                margin: 30
             }},
             subtitle: {{
                 text: 'Projeção da Equação 3 ponderada nas células de pastagem (Coleção 9 MapBiomas)',
@@ -363,12 +364,22 @@ document.addEventListener('DOMContentLoaded', function () {{
                 plotLines: [{{
                     value: 0,
                     color: '#2b6cb0',
-                    width: 2.5,
+                    width: 2,
                     zIndex: 5,
                     label: {{
                         text: 'Média Regional (0%)',
-                        align: 'right',
-                        style: {{ color: '#2b6cb0', fontWeight: 'bold' }}
+                        align: 'center',
+                        verticalAlign: 'bottom',
+                        y: -12,
+                        style: {{
+                            color: '#2b6cb0',
+                            fontWeight: 'bold',
+                            fontSize: '11px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            padding: '2px 5px',
+                            borderRadius: '3px',
+                            border: '1px solid #cbd5e0'
+                        }}
                     }}
                 }}]
             }},
