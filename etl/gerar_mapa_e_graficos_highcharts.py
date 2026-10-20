@@ -368,15 +368,16 @@ document.addEventListener('DOMContentLoaded', function () {{
                     zIndex: 5,
                     label: {{
                         text: 'Média Regional (0%)',
-                        align: 'center',
-                        verticalAlign: 'bottom',
-                        y: -12,
+                        align: 'right',
+                        verticalAlign: 'middle',
+                        x: 8,
+                        y: -60,
                         style: {{
                             color: '#2b6cb0',
                             fontWeight: 'bold',
                             fontSize: '11px',
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            padding: '2px 5px',
+                            backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                            padding: '3px 6px',
                             borderRadius: '3px',
                             border: '1px solid #cbd5e0'
                         }}
@@ -394,8 +395,7 @@ document.addEventListener('DOMContentLoaded', function () {{
                     const cor = p.y >= 0 ? '#2b6cb0' : '#c53030';
                     return `
                         <div style="padding: 6px 8px; font-family: sans-serif;">
-                            <strong style="font-size: 1.05rem;">${{this.x}}</strong><br/>
-                            <div style="margin: 6px 0; color: ${{cor}}; font-weight: bold; font-size: 1.15rem;">
+                            <div style="margin-bottom: 6px; color: ${{cor}}; font-weight: bold; font-size: 1.15rem;">
                                 Balanço Líquido: ${{sinal}}${{p.y.toFixed(2)}}%
                             </div>
                             <div style="font-size: 0.9rem; line-height: 1.5;">
@@ -560,8 +560,7 @@ document.addEventListener('DOMContentLoaded', function () {{
                     const p = this.point;
                     return `
                         <div style="padding: 6px 8px; font-family: sans-serif;">
-                            <strong style="font-size: 1.05rem;">${{this.x}}</strong><br/>
-                            <div style="margin: 6px 0; color: #c53030; font-weight: bold; font-size: 1.15rem;">
+                            <div style="margin-bottom: 6px; color: #c53030; font-weight: bold; font-size: 1.15rem;">
                                 Perda: ${{p.y.toFixed(1)}} Litros/vaca/ano
                             </div>
                             <div style="font-size: 0.9rem; line-height: 1.5;">

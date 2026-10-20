@@ -1,6 +1,6 @@
 ---
-title: "Projeção Espacial do Modelo Bioclimático de Produtividade Leiteira"
-subtitle: "Fundamentação Econométrica, Fontes de Dados e Álgebra Espacial da Equação 3 no Sudeste Brasileiro"
+title: "Projeção Espacial do Modelo Econométrico de Produtividade Leiteira no Sudeste (2008–2023)"
+subtitle: "Álgebra de Mapas, Efeitos do Estresse Térmico e Máscara de Pastagens (MapBiomas Coleção 9)"
 format:
   html:
     toc: true
@@ -293,9 +293,7 @@ Essa é exatamente a Equação 4 descrita no relatório.
 
 # Aplicação Prática e Zoneamento por Mesorregiões
 
-A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**. 
-
-Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e estatística é apresentada abaixo através do **Highcharts Maps**: encoste o cursor ou toque em qualquer mesorregião do mapa para visualizar o balanço percentual líquido ($\Delta\%$), a frequência de dias críticos de estresse térmico, o volume de chuva e a perda física anual de leite:
+A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**.
 
 ::: {.panel-tabset}
 
