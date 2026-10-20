@@ -55,7 +55,9 @@ def main():
         data_stats = json.load(f)
     stats_map = {d["id"]: d for d in data_stats}
 
-    # 2. Simplifica geometrias para renderização leve e rápida (~325 KB)
+    # 2. Processa geometrias:
+    #    - Filtra ilhas oceânicas remotas (Trindade e Martim Vaz a longitude > -38.5°) para centralizar o mapa no continente
+    #    - Simplifica polígonos com shapely (0.005) para renderização leve e rápida (~300 KB)
     features = []
     map_series_data = []
     for feat in raw_geo["features"]:
@@ -65,7 +67,19 @@ def main():
         nome = NOMES_OFICIAIS_MESO.get(m_id, props.get("nome", ""))
         uf = props.get("uf_sigla", st.get("uf", ""))
 
-        geom = shapely.geometry.shape(feat["geometry"]).simplify(0.005, preserve_topology=True)
+        geom = shapely.geometry.shape(feat["geometry"])
+        
+        # Filtro de ilhas oceânicas distantes (ex: Trindade e Martim Vaz no ES)
+        if geom.geom_type == "MultiPolygon":
+            continental_polys = [p for p in geom.geoms if p.bounds[0] < -38.5]
+            if not continental_polys:
+                continental_polys = list(geom.geoms)
+            geom = shapely.geometry.MultiPolygon(continental_polys) if len(continental_polys) > 1 else continental_polys[0]
+        elif geom.geom_type == "Polygon":
+            if geom.bounds[0] >= -38.5:
+                continue
+
+        geom_simplified = geom.simplify(0.005, preserve_topology=True)
 
         val = st.get("liq_pct", 0.0)
         itu = st.get("itu_dias", 0.0)
@@ -89,7 +103,7 @@ def main():
             "type": "Feature",
             "id": m_id,
             "properties": new_props,
-            "geometry": shapely.geometry.mapping(geom)
+            "geometry": shapely.geometry.mapping(geom_simplified)
         })
 
         map_series_data.append({
@@ -108,7 +122,7 @@ def main():
         "features": features
     }
 
-    # 3. Salva o GeoJSON otimizado
+    # 3. Salva o GeoJSON otimizado e centralizado
     geo_out = Path("assets/data/mesorregioes_sudeste_geo.json")
     geo_out.parent.mkdir(parents=True, exist_ok=True)
     with open(geo_out, "w", encoding="utf-8") as f:
@@ -217,15 +231,15 @@ document.addEventListener('DOMContentLoaded', function () {{
         Highcharts.mapChart('map-mesorregioes', {{
             chart: {{
                 map: MESORREGIOES_GEOJSON,
-                height: 640,
+                height: 650,
                 backgroundColor: 'transparent'
             }},
             title: {{
-                text: 'Mapa Bioclimático Interativo do Sudeste (37 Mesorregiões)',
+                text: 'Mapa Bioclimático do Sudeste (37 Mesorregiões)',
                 style: {{ color: '#1a365d', fontWeight: 'bold', fontSize: '1.25rem' }}
             }},
             subtitle: {{
-                text: 'Passe o mouse ou toque sobre qualquer mesorregião para ver o balanço líquido, calor e perdas estimadas',
+                text: 'Encoste o mouse ou toque sobre qualquer mesorregião para visualizar os indicadores',
                 style: {{ color: '#718096' }}
             }},
             mapNavigation: {{
@@ -305,15 +319,9 @@ document.addEventListener('DOMContentLoaded', function () {{
                         borderWidth: 2
                     }}
                 }},
+                // Rótulos estáticos desativados conforme solicitado: o nome aparece no hover/toque
                 dataLabels: {{
-                    enabled: true,
-                    format: '{{point.nome}}',
-                    style: {{
-                        fontSize: '9px',
-                        fontWeight: '600',
-                        color: '#1a202c',
-                        textOutline: '2px rgba(255,255,255,0.9)'
-                    }}
+                    enabled: false
                 }}
             }}]
         }});
