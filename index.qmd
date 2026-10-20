@@ -53,9 +53,9 @@ Como os efeitos fixos ($\alpha_i$ e $\gamma_t$) eliminam essas variáveis de con
 
 ---
 
-## Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional
+## Explicação dos Betas
 
-Para compreender com exatidão a natureza dos coeficientes $\beta$, recorre-se à dedução via **Regra da Cadeia** incorporando explicitamente a **análise dimensional**, demonstrando exatamente em que ponto a unidade física da produtividade é cancelada:
+Para entender de forma amigável o significado dos coeficientes $\beta$, podemos usar a **Regra da Cadeia** e uma simples **análise dimensional**. A ideia aqui é apenas facilitar a compreensão, mostrando de maneira direta como a unidade física de produção se cancela e dá lugar a uma taxa percentual:
 
 ### A. Definição das Variáveis e Unidades Físicas
 
@@ -207,9 +207,93 @@ O coeficiente da chuva é menor na quarta casa decimal porque atua sobre centena
 
 ---
 
-# 5. Aplicação Prática e Zoneamento por Mesorregiões
+# 5. Da Econometria à Perda Física de Leite (Equação 4)
 
-A projeção espacial da Equação 3 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**. 
+Para você se sentir 100% confortável, vamos olhar para essa expressão sem nenhum salto lógico, conectando o **modelo econométrico original da Nota Técnica** com a álgebra do raster.
+
+---
+
+### 1. Relembrando o Modelo Econométrico Geral {.unnumbered}
+
+A equação geral estimada na Seção 2.1 da Nota Técnica é:
+
+$$\log(Y_{it}) = \alpha_i + \gamma_t + \beta_{\text{calor}} \cdot \text{ITU}_{it} + \beta_{\text{chuva}} \cdot \text{Chuva}_{it} + \varepsilon_{it}$$
+
+Quando a Nota Técnica passa para a **Equação 4** (*Perda Física Estimada de Leite*), o objetivo é responder a uma pergunta muito específica:
+
+> *"Quanto leite é perdido unicamente por causa do calor crítico ($R_{\text{ITU}}$)?"*
+
+Para isolar o efeito marginal do calor de forma pura, os demais fatores estruturais — a heterogeneidade fixa do município ($\alpha_i$), a tendência temporal/choques anuais ($\gamma_t$), o efeito pluviométrico e o termo de erro — formam o **patamar basal de produtividade** daquele local.
+
+---
+
+### 2. A Decomposição em Duas Partes: A "Base" e o "Choque do Calor" {.unnumbered}
+
+Pense na produtividade $\log(Y)$ daquele pixel como a soma de dois blocos:
+
+$$\log(Y) = \underbrace{\big(\alpha_i + \gamma_t + \beta_{\text{chuva}} \cdot \text{Chuva} + \varepsilon\big)}_{\text{Tudo o que define a produtividade normal do local}} \;+\; \underbrace{\beta_{\text{calor}} \cdot R_{\text{ITU}}}_{\text{O impacto do calor}}$$
+
+Se chamarmos todo esse primeiro bloco estrutural de **$\log(Y_{\text{base}})$**, chegamos naturalmente a:
+
+$$\log(Y) = \log(Y_{\text{base}}) + \beta_{\text{calor}} \cdot R_{\text{ITU}}$$
+
+---
+
+### 3. O que acontece quando $R_{\text{ITU}} = 0$? (O Teste dos Extremos) {.unnumbered}
+
+Faça o teste prático dessa equação:
+
+* **Se um local tem $R_{\text{ITU}} = 0$ dias de calor extremo:**
+
+$$\log(Y) = \log(Y_{\text{base}}) + \beta_{\text{calor}} \cdot 0$$
+
+$$\log(Y) = \log(Y_{\text{base}}) \implies Y = Y_{\text{base}}$$
+
+Ou seja, na ausência total de dias de estresse térmico crítico, a produtividade atinge exatamente o seu valor basal de referência ($Y_{\text{base}}$).
+
+* **Se ocorrem dias de estresse térmico crítico ($R_{\text{ITU}} > 0$):**  
+Como $\beta_{\text{calor}} = -0,00282$ é negativo, o termo $\beta_{\text{calor}} \cdot R_{\text{ITU}}$ torna-se um número negativo.  
+Ele é subtraído de $\log(Y_{\text{base}})$, fazendo com que $\log(Y)$ fique menor que $\log(Y_{\text{base}})$.
+
+---
+
+### 4. A Ponte para a Fração Exponencial {.unnumbered}
+
+Agora veja como a álgebra se resolve de forma limpa:
+
+1. **Subtraia $\log(Y_{\text{base}})$ de ambos os lados:**
+
+$$\log(Y) - \log(Y_{\text{base}}) = \beta_{\text{calor}} \cdot R_{\text{ITU}}$$
+
+2. **Aplique a propriedade dos logaritmos ($\log a - \log b = \log(a/b)$):**
+
+$$\log\left(\frac{Y}{Y_{\text{base}}}\right) = \beta_{\text{calor}} \cdot R_{\text{ITU}}$$
+
+3. **Aplique a função exponencial $\exp(\cdot)$ em ambos os lados para cancelar o logaritmo:**
+
+$$\frac{Y}{Y_{\text{base}}} = \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})$$
+
+4. **Isole a produção observada $Y$:**
+
+$$Y = Y_{\text{base}} \cdot \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})$$
+
+A produção real é a produtividade base multiplicada por um fator de retenção menor que 1.
+
+A **perda física** é simplesmente a diferença entre o que o animal produziria na base ($Y_{\text{base}}$) e o que ele efetivamente produz com o calor ($Y$):
+
+$$\text{Perda} = Y_{\text{base}} - Y$$
+
+$$\text{Perda} = Y_{\text{base}} - Y_{\text{base}} \cdot \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})$$
+
+$$\text{Perda} = Y_{\text{base}} \times \Big(1 - \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})\Big)$$
+
+Essa é exatamente a Equação 4 descrita no relatório.
+
+---
+
+# 6. Aplicação Prática e Zoneamento por Mesorregiões
+
+A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**. 
 
 Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e estatística é apresentada abaixo através do **Highcharts Maps**: encoste o cursor ou toque em qualquer mesorregião do mapa para visualizar o balanço percentual líquido ($\Delta\%$), a frequência de dias críticos de estresse térmico, o volume de chuva e a perda física anual de leite:
 
@@ -239,14 +323,6 @@ Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e
 <div id="chart-perda-absoluta"></div>
 :::
 
-:::
-
-::: {.callout-note}
-## 💡 Entendendo os Dois Indicadores: Por que há "Perda Física" mesmo com Balanço Positivo (Azul)?
-Um ponto fundamental para esclarecer ao orientador é a distinção de referência entre a **taxa percentual relativa** e o **volume físico absoluto**:
-
-1. **Balanço Climático Líquido ($\Delta\%_{\text{líquido}}$ - Equação 3):** É uma métrica **relativa à média regional das pastagens do Sudeste** ($\overline{\text{ITU}} \approx 52\text{ dias/ano}$). As mesorregiões em azul (como o Sul de Minas, com apenas ~16 dias de calor crítico) apresentam balanço positivo ($+15,9\%$) porque desfrutam de um refúgio bioclimático substancialmente mais ameno que a média do Sudeste.
-2. **Perda Física Estimada ($\text{L/vaca/ano}$ - Equação 4):** É uma métrica **absoluta frente ao contrafactual biológico de estresse zero** ($R_{\text{ITU}} = 0$ dias críticos, ou seja, conforto térmico pleno os 365 dias do ano). Como mesmo nas serras do Sul de Minas ou Mantiqueira ocorrem cerca de 12 a 16 dias no auge do verão com $\text{ITU} > 79$, o rebanho sofre estresse agudo nessas ocasiões, deixando de produzir $\approx 100\text{ L/vaca/ano}$ em relação a um hipotético ano 100% fresco.
 :::
 
 ::: {.scenario-grid}
@@ -305,7 +381,7 @@ $$\begin{aligned}
 
 ---
 
-# 6. Implementação Vetorizada em Python
+# 7. Implementação Vetorizada em Python
 
 No pipeline de dados, a álgebra de mapas da Equação 3 é executada em matrizes contínuas com **Python** (`numpy` e `rasterio`):
 

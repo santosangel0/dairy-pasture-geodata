@@ -200,7 +200,7 @@ window.Quarto = {
   <li><a href="#intercepto-de-município-alpha_i---efeito-fixo-municipal" id="toc-intercepto-de-município-alpha_i---efeito-fixo-municipal" class="nav-link" data-scroll-target="#intercepto-de-município-alpha_i---efeito-fixo-municipal"><span class="header-section-number">1.1.1</span> 1. Intercepto de Município (<span class="math inline">\(\alpha_i\)</span> - Efeito Fixo Municipal)</a></li>
   <li><a href="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" id="toc-intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" class="nav-link" data-scroll-target="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano"><span class="header-section-number">1.1.2</span> 2. Intercepto de Tempo (<span class="math inline">\(\gamma_t\)</span> - Efeito Fixo Temporal / Ano)</a></li>
   </ul></li>
-  <li><a href="#dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" id="toc-dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" class="nav-link" data-scroll-target="#dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional"><span class="header-section-number">1.2</span> Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional</a>
+  <li><a href="#explicação-dos-betas" id="toc-explicação-dos-betas" class="nav-link" data-scroll-target="#explicação-dos-betas"><span class="header-section-number">1.2</span> Explicação dos Betas</a>
   <ul class="collapse">
   <li><a href="#a.-definição-das-variáveis-e-unidades-físicas" id="toc-a.-definição-das-variáveis-e-unidades-físicas" class="nav-link" data-scroll-target="#a.-definição-das-variáveis-e-unidades-físicas"><span class="header-section-number">1.2.1</span> A. Definição das Variáveis e Unidades Físicas</a></li>
   <li><a href="#b.-a-derivada-absoluta-a-taxa-linear" id="toc-b.-a-derivada-absoluta-a-taxa-linear" class="nav-link" data-scroll-target="#b.-a-derivada-absoluta-a-taxa-linear"><span class="header-section-number">1.2.2</span> B. A Derivada Absoluta (A Taxa Linear)</a></li>
@@ -221,8 +221,15 @@ window.Quarto = {
   <li><a href="#a.-escala-do-calor-r_textitu" id="toc-a.-escala-do-calor-r_textitu" class="nav-link" data-scroll-target="#a.-escala-do-calor-r_textitu"><span class="header-section-number">4.0.1</span> A. Escala do Calor (<span class="math inline">\(R_{\text{ITU}}\)</span>)</a></li>
   <li><a href="#b.-escala-da-chuva-r_textchuva" id="toc-b.-escala-da-chuva-r_textchuva" class="nav-link" data-scroll-target="#b.-escala-da-chuva-r_textchuva"><span class="header-section-number">4.0.2</span> B. Escala da Chuva (<span class="math inline">\(R_{\text{Chuva}}\)</span>)</a></li>
   </ul></li>
-  <li><a href="#aplicação-prática-e-zoneamento-por-mesorregiões" id="toc-aplicação-prática-e-zoneamento-por-mesorregiões" class="nav-link" data-scroll-target="#aplicação-prática-e-zoneamento-por-mesorregiões"><span class="header-section-number">5</span> 5. Aplicação Prática e Zoneamento por Mesorregiões</a></li>
-  <li><a href="#implementação-vetorizada-em-python" id="toc-implementação-vetorizada-em-python" class="nav-link" data-scroll-target="#implementação-vetorizada-em-python"><span class="header-section-number">6</span> 6. Implementação Vetorizada em Python</a></li>
+  <li><a href="#da-econometria-à-perda-física-de-leite-equação-4" id="toc-da-econometria-à-perda-física-de-leite-equação-4" class="nav-link" data-scroll-target="#da-econometria-à-perda-física-de-leite-equação-4"><span class="header-section-number">5</span> 5. Da Econometria à Perda Física de Leite (Equação 4)</a>
+  <ul class="collapse">
+  <li><a href="#relembrando-o-modelo-econométrico-geral" id="toc-relembrando-o-modelo-econométrico-geral" class="nav-link" data-scroll-target="#relembrando-o-modelo-econométrico-geral">1. Relembrando o Modelo Econométrico Geral</a></li>
+  <li><a href="#a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor" id="toc-a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor" class="nav-link" data-scroll-target="#a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor">2. A Decomposição em Duas Partes: A “Base” e o “Choque do Calor”</a></li>
+  <li><a href="#o-que-acontece-quando-r_textitu-0-o-teste-dos-extremos" id="toc-o-que-acontece-quando-r_textitu-0-o-teste-dos-extremos" class="nav-link" data-scroll-target="#o-que-acontece-quando-r_textitu-0-o-teste-dos-extremos">3. O que acontece quando <span class="math inline">\(R_{\text{ITU}} = 0\)</span>? (O Teste dos Extremos)</a></li>
+  <li><a href="#a-ponte-para-a-fração-exponencial" id="toc-a-ponte-para-a-fração-exponencial" class="nav-link" data-scroll-target="#a-ponte-para-a-fração-exponencial">4. A Ponte para a Fração Exponencial</a></li>
+  </ul></li>
+  <li><a href="#aplicação-prática-e-zoneamento-por-mesorregiões" id="toc-aplicação-prática-e-zoneamento-por-mesorregiões" class="nav-link" data-scroll-target="#aplicação-prática-e-zoneamento-por-mesorregiões"><span class="header-section-number">6</span> 6. Aplicação Prática e Zoneamento por Mesorregiões</a></li>
+  <li><a href="#implementação-vetorizada-em-python" id="toc-implementação-vetorizada-em-python" class="nav-link" data-scroll-target="#implementação-vetorizada-em-python"><span class="header-section-number">7</span> 7. Implementação Vetorizada em Python</a></li>
   </ul>
 </nav>
     </div>
@@ -310,9 +317,9 @@ Note
 <hr>
 </section>
 </section>
-<section id="dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional"><span class="header-section-number">1.2</span> Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional</h2>
-<p>Para compreender com exatidão a natureza dos coeficientes <span class="math inline">\(\beta\)</span>, recorre-se à dedução via <strong>Regra da Cadeia</strong> incorporando explicitamente a <strong>análise dimensional</strong>, demonstrando exatamente em que ponto a unidade física da produtividade é cancelada:</p>
+<section id="explicação-dos-betas" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="explicação-dos-betas"><span class="header-section-number">1.2</span> Explicação dos Betas</h2>
+<p>Para entender de forma amigável o significado dos coeficientes <span class="math inline">\(\beta\)</span>, podemos usar a <strong>Regra da Cadeia</strong> e uma simples <strong>análise dimensional</strong>. A ideia aqui é apenas facilitar a compreensão, mostrando de maneira direta como a unidade física de produção se cancela e dá lugar a uma taxa percentual:</p>
 <section id="a.-definição-das-variáveis-e-unidades-físicas" class="level3" data-number="1.2.1">
 <h3 data-number="1.2.1" class="anchored" data-anchor-id="a.-definição-das-variáveis-e-unidades-físicas"><span class="header-section-number">1.2.1</span> A. Definição das Variáveis e Unidades Físicas</h3>
 <ul>
@@ -472,9 +479,76 @@ Note
 <hr>
 </section>
 </section>
-<section id="aplicação-prática-e-zoneamento-por-mesorregiões" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 5. Aplicação Prática e Zoneamento por Mesorregiões</h1>
-<p>A projeção espacial da Equação 3 permite analisar a heterogeneidade bioclimática sobre as <strong>37 mesorregiões do Sudeste brasileiro</strong>.</p>
+<section id="da-econometria-à-perda-física-de-leite-equação-4" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. Da Econometria à Perda Física de Leite (Equação 4)</h1>
+<p>Para você se sentir 100% confortável, vamos olhar para essa expressão sem nenhum salto lógico, conectando o <strong>modelo econométrico original da Nota Técnica</strong> com a álgebra do raster.</p>
+<hr>
+<section id="relembrando-o-modelo-econométrico-geral" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="relembrando-o-modelo-econométrico-geral">1. Relembrando o Modelo Econométrico Geral</h3>
+<p>A equação geral estimada na Seção 2.1 da Nota Técnica é:</p>
+<p><span class="math display">\[\log(Y_{it}) = \alpha_i + \gamma_t + \beta_{\text{calor}} \cdot \text{ITU}_{it} + \beta_{\text{chuva}} \cdot \text{Chuva}_{it} + \varepsilon_{it}\]</span></p>
+<p>Quando a Nota Técnica passa para a <strong>Equação 4</strong> (<em>Perda Física Estimada de Leite</em>), o objetivo é responder a uma pergunta muito específica:</p>
+<blockquote class="blockquote">
+<p><em>“Quanto leite é perdido unicamente por causa do calor crítico (<span class="math inline">\(R_{\text{ITU}}\)</span>)?”</em></p>
+</blockquote>
+<p>Para isolar o efeito marginal do calor de forma pura, os demais fatores estruturais — a heterogeneidade fixa do município (<span class="math inline">\(\alpha_i\)</span>), a tendência temporal/choques anuais (<span class="math inline">\(\gamma_t\)</span>), o efeito pluviométrico e o termo de erro — formam o <strong>patamar basal de produtividade</strong> daquele local.</p>
+<hr>
+</section>
+<section id="a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a-decomposição-em-duas-partes-a-base-e-o-choque-do-calor">2. A Decomposição em Duas Partes: A “Base” e o “Choque do Calor”</h3>
+<p>Pense na produtividade <span class="math inline">\(\log(Y)\)</span> daquele pixel como a soma de dois blocos:</p>
+<p><span class="math display">\[\log(Y) = \underbrace{\big(\alpha_i + \gamma_t + \beta_{\text{chuva}} \cdot \text{Chuva} + \varepsilon\big)}_{\text{Tudo o que define a produtividade normal do local}} \;+\; \underbrace{\beta_{\text{calor}} \cdot R_{\text{ITU}}}_{\text{O impacto do calor}}\]</span></p>
+<p>Se chamarmos todo esse primeiro bloco estrutural de <strong><span class="math inline">\(\log(Y_{\text{base}})\)</span></strong>, chegamos naturalmente a:</p>
+<p><span class="math display">\[\log(Y) = \log(Y_{\text{base}}) + \beta_{\text{calor}} \cdot R_{\text{ITU}}\]</span></p>
+<hr>
+</section>
+<section id="o-que-acontece-quando-r_textitu-0-o-teste-dos-extremos" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="o-que-acontece-quando-r_textitu-0-o-teste-dos-extremos">3. O que acontece quando <span class="math inline">\(R_{\text{ITU}} = 0\)</span>? (O Teste dos Extremos)</h3>
+<p>Faça o teste prático dessa equação:</p>
+<ul>
+<li><strong>Se um local tem <span class="math inline">\(R_{\text{ITU}} = 0\)</span> dias de calor extremo:</strong></li>
+</ul>
+<p><span class="math display">\[\log(Y) = \log(Y_{\text{base}}) + \beta_{\text{calor}} \cdot 0\]</span></p>
+<p><span class="math display">\[\log(Y) = \log(Y_{\text{base}}) \implies Y = Y_{\text{base}}\]</span></p>
+<p>Ou seja, na ausência total de dias de estresse térmico crítico, a produtividade atinge exatamente o seu valor basal de referência (<span class="math inline">\(Y_{\text{base}}\)</span>).</p>
+<ul>
+<li><strong>Se ocorrem dias de estresse térmico crítico (<span class="math inline">\(R_{\text{ITU}} &gt; 0\)</span>):</strong><br>
+Como <span class="math inline">\(\beta_{\text{calor}} = -0,00282\)</span> é negativo, o termo <span class="math inline">\(\beta_{\text{calor}} \cdot R_{\text{ITU}}\)</span> torna-se um número negativo.<br>
+Ele é subtraído de <span class="math inline">\(\log(Y_{\text{base}})\)</span>, fazendo com que <span class="math inline">\(\log(Y)\)</span> fique menor que <span class="math inline">\(\log(Y_{\text{base}})\)</span>.</li>
+</ul>
+<hr>
+</section>
+<section id="a-ponte-para-a-fração-exponencial" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="a-ponte-para-a-fração-exponencial">4. A Ponte para a Fração Exponencial</h3>
+<p>Agora veja como a álgebra se resolve de forma limpa:</p>
+<ol type="1">
+<li><strong>Subtraia <span class="math inline">\(\log(Y_{\text{base}})\)</span> de ambos os lados:</strong></li>
+</ol>
+<p><span class="math display">\[\log(Y) - \log(Y_{\text{base}}) = \beta_{\text{calor}} \cdot R_{\text{ITU}}\]</span></p>
+<ol start="2" type="1">
+<li><strong>Aplique a propriedade dos logaritmos (<span class="math inline">\(\log a - \log b = \log(a/b)\)</span>):</strong></li>
+</ol>
+<p><span class="math display">\[\log\left(\frac{Y}{Y_{\text{base}}}\right) = \beta_{\text{calor}} \cdot R_{\text{ITU}}\]</span></p>
+<ol start="3" type="1">
+<li><strong>Aplique a função exponencial <span class="math inline">\(\exp(\cdot)\)</span> em ambos os lados para cancelar o logaritmo:</strong></li>
+</ol>
+<p><span class="math display">\[\frac{Y}{Y_{\text{base}}} = \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})\]</span></p>
+<ol start="4" type="1">
+<li><strong>Isole a produção observada <span class="math inline">\(Y\)</span>:</strong></li>
+</ol>
+<p><span class="math display">\[Y = Y_{\text{base}} \cdot \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})\]</span></p>
+<p>A produção real é a produtividade base multiplicada por um fator de retenção menor que 1.</p>
+<p>A <strong>perda física</strong> é simplesmente a diferença entre o que o animal produziria na base (<span class="math inline">\(Y_{\text{base}}\)</span>) e o que ele efetivamente produz com o calor (<span class="math inline">\(Y\)</span>):</p>
+<p><span class="math display">\[\text{Perda} = Y_{\text{base}} - Y\]</span></p>
+<p><span class="math display">\[\text{Perda} = Y_{\text{base}} - Y_{\text{base}} \cdot \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})\]</span></p>
+<p><span class="math display">\[\text{Perda} = Y_{\text{base}} \times \Big(1 - \exp(\beta_{\text{calor}} \cdot R_{\text{ITU}})\Big)\]</span></p>
+<p>Essa é exatamente a Equação 4 descrita no relatório.</p>
+<hr>
+</section>
+</section>
+<section id="aplicação-prática-e-zoneamento-por-mesorregiões" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6. Aplicação Prática e Zoneamento por Mesorregiões</h1>
+<p>A projeção espacial da Equação 3 e da Equação 4 permite analisar a heterogeneidade bioclimática sobre as <strong>37 mesorregiões do Sudeste brasileiro</strong>.</p>
 <p>Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e estatística é apresentada abaixo através do <strong>Highcharts Maps</strong>: encoste o cursor ou toque em qualquer mesorregião do mapa para visualizar o balanço percentual líquido (<span class="math inline">\(\Delta\%\)</span>), a frequência de dias críticos de estresse térmico, o volume de chuva e a perda física anual de leite:</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">🗺️ Mapa Interativo do Sudeste</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">📊 Ranking do Balanço Líquido (Δ%)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">🌡️ Estresse Térmico vs.&nbsp;Impacto Líquido</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">🥛 Volume de Leite Perdido (L/vaca)</a></li></ul>
@@ -507,23 +581,6 @@ Note
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>💡 Entendendo os Dois Indicadores: Por que há “Perda Física” mesmo com Balanço Positivo (Azul)?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Um ponto fundamental para esclarecer ao orientador é a distinção de referência entre a <strong>taxa percentual relativa</strong> e o <strong>volume físico absoluto</strong>:</p>
-<ol type="1">
-<li><strong>Balanço Climático Líquido (<span class="math inline">\(\Delta\%_{\text{líquido}}\)</span> - Equação 3):</strong> É uma métrica <strong>relativa à média regional das pastagens do Sudeste</strong> (<span class="math inline">\(\overline{\text{ITU}} \approx 52\text{ dias/ano}\)</span>). As mesorregiões em azul (como o Sul de Minas, com apenas ~16 dias de calor crítico) apresentam balanço positivo (<span class="math inline">\(+15,9\%\)</span>) porque desfrutam de um refúgio bioclimático substancialmente mais ameno que a média do Sudeste.</li>
-<li><strong>Perda Física Estimada (<span class="math inline">\(\text{L/vaca/ano}\)</span> - Equação 4):</strong> É uma métrica <strong>absoluta frente ao contrafactual biológico de estresse zero</strong> (<span class="math inline">\(R_{\text{ITU}} = 0\)</span> dias críticos, ou seja, conforto térmico pleno os 365 dias do ano). Como mesmo nas serras do Sul de Minas ou Mantiqueira ocorrem cerca de 12 a 16 dias no auge do verão com <span class="math inline">\(\text{ITU} &gt; 79\)</span>, o rebanho sofre estresse agudo nessas ocasiões, deixando de produzir <span class="math inline">\(\approx 100\text{ L/vaca/ano}\)</span> em relação a um hipotético ano 100% fresco.</li>
-</ol>
 </div>
 </div>
 <div class="scenario-grid">
@@ -590,8 +647,8 @@ Região de Refúgio Térmico (Tom Azul)
 </div>
 <hr>
 </section>
-<section id="implementação-vetorizada-em-python" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 6. Implementação Vetorizada em Python</h1>
+<section id="implementação-vetorizada-em-python" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 7. Implementação Vetorizada em Python</h1>
 <p>No pipeline de dados, a álgebra de mapas da Equação 3 é executada em matrizes contínuas com <strong>Python</strong> (<code>numpy</code> e <code>rasterio</code>):</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
