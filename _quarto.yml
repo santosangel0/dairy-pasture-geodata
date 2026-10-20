@@ -1,0 +1,29 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Modelo Bioclimático de Produtividade Leiteira"
+  description: "Relatório técnico e didático da projeção espacial do modelo econométrico no Sudeste (2008–2023)."
+  navbar:
+    title: "Modelo Leite Sudeste"
+    left:
+      - href: index.qmd
+        text: "Relatório (Equação 3)"
+    right:
+      - icon: file-earmark-pdf
+        href: nota_tecnica_modelo_leite_sudeste.pdf
+        text: "Nota Técnica (PDF)"
+
+format:
+  html:
+    theme:
+      light: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    toc-title: "Nesta Apresentação"
+    number-sections: true
+    smooth-scroll: true
+    code-copy: true
+    html-math-method: mathjax
