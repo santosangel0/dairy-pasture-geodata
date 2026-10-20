@@ -207,11 +207,19 @@ O coeficiente da chuva é menor na quarta casa decimal porque atua sobre centena
 
 ---
 
-# 5. Aplicação Prática e Análise por Mesorregiões
+# 5. Aplicação Prática e Zoneamento por Mesorregiões
 
-A aplicação da Equação 3 sobre as matrizes geoespaciais permite sintetizar o impacto bioclimático nas **37 mesorregiões do Sudeste brasileiro**. Em substituição a mapas estáticos, os painéis interativos abaixo permitem inspecionar detalhadamente o balanço líquido, a incidência de estresse térmico e a perda física de leite em cada região:
+A projeção espacial da Equação 3 permite analisar a heterogeneidade bioclimática sobre as **37 mesorregiões do Sudeste brasileiro**. 
+
+Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e estatística é apresentada abaixo através do **Highcharts Maps**: encoste o cursor ou toque em qualquer mesorregião do mapa para visualizar o balanço percentual líquido ($\Delta\%$), a frequência de dias críticos de estresse térmico, o volume de chuva e a perda física anual de leite:
 
 ::: {.panel-tabset}
+
+## 🗺️ Mapa Interativo do Sudeste
+
+::: {.highcharts-container-box}
+<div id="map-mesorregioes"></div>
+:::
 
 ## 📊 Ranking do Balanço Líquido (Δ%)
 

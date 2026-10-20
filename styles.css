@@ -18,7 +18,7 @@ h1.title {
   margin-bottom: 24px;
 }
 
-/* Contêiner dos Gráficos Interativos Highcharts */
+/* Contêiner dos Gráficos e Mapas Interativos Highcharts */
 .highcharts-container-box {
   background: #ffffff;
   border: 1px solid #e2e8f0;
@@ -26,6 +26,15 @@ h1.title {
   padding: 16px;
   margin: 18px 0 26px 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+#map-mesorregioes {
+  min-height: 640px;
+  width: 100%;
+}
+
+.highcharts-point {
+  cursor: pointer;
 }
 
 /* Grid de Cenários Contrastantes */
