@@ -6,7 +6,6 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Pesquisa em Geodados &amp; Pecuária Leiteira">
 
 <title>Projeção Espacial do Modelo Bioclimático de Produtividade Leiteira – Modelo Bioclimático de Produtividade Leiteira</title>
 <style>
@@ -180,23 +179,38 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Nesta Apresentação</h2>
+    <h2 id="toc-title">Sumário do Relatório</h2>
    
   <ul>
-  <li><a href="#a-equação-estrutural-do-raster-equação-3" id="toc-a-equação-estrutural-do-raster-equação-3" class="nav-link active" data-scroll-target="#a-equação-estrutural-do-raster-equação-3"><span class="header-section-number">1</span> A Equação Estrutural do Raster (Equação 3)</a></li>
-  <li><a href="#de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" id="toc-de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" class="nav-link" data-scroll-target="#de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear"><span class="header-section-number">2</span> 1. De onde vem a estrutura matemática? (A lógica do Log-Linear)</a></li>
-  <li><a href="#o-que-significa-centrar-na-média-regional" id="toc-o-que-significa-centrar-na-média-regional" class="nav-link" data-scroll-target="#o-que-significa-centrar-na-média-regional"><span class="header-section-number">3</span> 2. O que significa “centrar na média regional”?</a>
+  <li><a href="#o-modelo-econométrico-de-painel" id="toc-o-modelo-econométrico-de-painel" class="nav-link active" data-scroll-target="#o-modelo-econométrico-de-painel"><span class="header-section-number">1</span> 1. O Modelo Econométrico de Painel</a>
   <ul class="collapse">
-  <li><a href="#por-que-fazer-essa-subtração" id="toc-por-que-fazer-essa-subtração" class="nav-link" data-scroll-target="#por-que-fazer-essa-subtração"><span class="header-section-number">3.0.1</span> Por que fazer essa subtração?</a></li>
+  <li><a href="#coeficientes-estruturais-estimados" id="toc-coeficientes-estruturais-estimados" class="nav-link" data-scroll-target="#coeficientes-estruturais-estimados"><span class="header-section-number">1.0.1</span> Coeficientes Estruturais Estimados</a></li>
+  <li><a href="#o-que-significam-os-interceptos-de-município-e-de-tempo" id="toc-o-que-significam-os-interceptos-de-município-e-de-tempo" class="nav-link" data-scroll-target="#o-que-significam-os-interceptos-de-município-e-de-tempo"><span class="header-section-number">1.1</span> O que significam os Interceptos de Município e de Tempo?</a>
+  <ul class="collapse">
+  <li><a href="#intercepto-de-município-alpha_i---efeito-fixo-municipal" id="toc-intercepto-de-município-alpha_i---efeito-fixo-municipal" class="nav-link" data-scroll-target="#intercepto-de-município-alpha_i---efeito-fixo-municipal"><span class="header-section-number">1.1.1</span> 1. Intercepto de Município (<span class="math inline">\(\alpha_i\)</span> - Efeito Fixo Municipal)</a></li>
+  <li><a href="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" id="toc-intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" class="nav-link" data-scroll-target="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano"><span class="header-section-number">1.1.2</span> 2. Intercepto de Tempo (<span class="math inline">\(\gamma_t\)</span> - Efeito Fixo Temporal / Ano)</a></li>
   </ul></li>
-  <li><a href="#as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" id="toc-as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" class="nav-link" data-scroll-target="#as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta"><span class="header-section-number">4</span> 3. As Escalas e as Ordens de Grandeza (Os Coeficientes <span class="math inline">\(\beta\)</span>)</a>
+  </ul></li>
+  <li><a href="#fontes-de-dados-escalas-e-resoluções-espaciais" id="toc-fontes-de-dados-escalas-e-resoluções-espaciais" class="nav-link" data-scroll-target="#fontes-de-dados-escalas-e-resoluções-espaciais"><span class="header-section-number">2</span> 2. Fontes de Dados, Escalas e Resoluções Espaciais</a>
+  <ul class="collapse">
+  <li><a href="#especificações-técnicas-da-grade-espacial-do-sudeste" id="toc-especificações-técnicas-da-grade-espacial-do-sudeste" class="nav-link" data-scroll-target="#especificações-técnicas-da-grade-espacial-do-sudeste"><span class="header-section-number">2.0.1</span> Especificações Técnicas da Grade Espacial do Sudeste</a></li>
+  </ul></li>
+  <li><a href="#a-equação-estrutural-do-raster-equação-3" id="toc-a-equação-estrutural-do-raster-equação-3" class="nav-link" data-scroll-target="#a-equação-estrutural-do-raster-equação-3"><span class="header-section-number">3</span> 3. A Equação Estrutural do Raster (Equação 3)</a>
+  <ul class="collapse">
+  <li><a href="#de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" id="toc-de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" class="nav-link" data-scroll-target="#de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear"><span class="header-section-number">3.1</span> De onde vem a estrutura matemática? (A lógica do Log-Linear)</a></li>
+  <li><a href="#o-que-significa-centrar-na-média-regional" id="toc-o-que-significa-centrar-na-média-regional" class="nav-link" data-scroll-target="#o-que-significa-centrar-na-média-regional"><span class="header-section-number">3.2</span> O que significa “centrar na média regional”?</a>
+  <ul class="collapse">
+  <li><a href="#por-que-centrar-na-média" id="toc-por-que-centrar-na-média" class="nav-link" data-scroll-target="#por-que-centrar-na-média"><span class="header-section-number">3.2.1</span> Por que centrar na média?</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" id="toc-as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" class="nav-link" data-scroll-target="#as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta"><span class="header-section-number">4</span> 4. As Escalas e as Ordens de Grandeza (Os Coeficientes <span class="math inline">\(\beta\)</span>)</a>
   <ul class="collapse">
   <li><a href="#a.-a-escala-do-calor-r_textitu" id="toc-a.-a-escala-do-calor-r_textitu" class="nav-link" data-scroll-target="#a.-a-escala-do-calor-r_textitu"><span class="header-section-number">4.0.1</span> A. A Escala do Calor (<span class="math inline">\(R_{\text{ITU}}\)</span>)</a></li>
   <li><a href="#b.-a-escala-da-chuva-r_textchuva" id="toc-b.-a-escala-da-chuva-r_textchuva" class="nav-link" data-scroll-target="#b.-a-escala-da-chuva-r_textchuva"><span class="header-section-number">4.0.2</span> B. A Escala da Chuva (<span class="math inline">\(R_{\text{Chuva}}\)</span>)</a></li>
   </ul></li>
-  <li><a href="#como-esse-cálculo-se-comporta-na-prática-dois-exemplos-reais" id="toc-como-esse-cálculo-se-comporta-na-prática-dois-exemplos-reais" class="nav-link" data-scroll-target="#como-esse-cálculo-se-comporta-na-prática-dois-exemplos-reais"><span class="header-section-number">5</span> 4. Como esse cálculo se comporta na prática (Dois exemplos reais)</a></li>
-  <li><a href="#implementação-vetorizada-em-python" id="toc-implementação-vetorizada-em-python" class="nav-link" data-scroll-target="#implementação-vetorizada-em-python"><span class="header-section-number">6</span> 4.1 Implementação Vetorizada em Python</a></li>
-  <li><a href="#resumo-em-3-frases-para-dizer-ao-seu-orientador" id="toc-resumo-em-3-frases-para-dizer-ao-seu-orientador" class="nav-link" data-scroll-target="#resumo-em-3-frases-para-dizer-ao-seu-orientador"><span class="header-section-number">7</span> 5. Resumo em 3 Frases para dizer ao seu Orientador</a></li>
+  <li><a href="#comportamento-espacial-e-aplicação-prática" id="toc-comportamento-espacial-e-aplicação-prática" class="nav-link" data-scroll-target="#comportamento-espacial-e-aplicação-prática"><span class="header-section-number">5</span> 5. Comportamento Espacial e Aplicação Prática</a></li>
+  <li><a href="#implementação-vetorizada-em-python" id="toc-implementação-vetorizada-em-python" class="nav-link" data-scroll-target="#implementação-vetorizada-em-python"><span class="header-section-number">6</span> 6. Implementação Vetorizada em Python</a></li>
+  <li><a href="#resumo-em-3-frases-para-o-orientador" id="toc-resumo-em-3-frases-para-o-orientador" class="nav-link" data-scroll-target="#resumo-em-3-frases-para-o-orientador"><span class="header-section-number">7</span> 7. Resumo em 3 Frases para o Orientador</a></li>
   </ul>
 </nav>
     </div>
@@ -206,26 +220,14 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Projeção Espacial do Modelo Bioclimático de Produtividade Leiteira</h1>
-<p class="subtitle lead">Dissecação Matemática e Didática da Equação 3: Balanço Climático Líquido no Sudeste Brasileiro</p>
+<p class="subtitle lead">Fundamentação Econométrica, Fontes de Dados e Álgebra Espacial da Equação 3 no Sudeste Brasileiro</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Pesquisa em Geodados &amp; Pecuária Leiteira </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">20/10/2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -235,145 +237,188 @@ window.Quarto = {
 </header>
 
 
+<section id="o-modelo-econométrico-de-painel" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 1. O Modelo Econométrico de Painel</h1>
+<p>A modelagem estrutural baseia-se em um modelo econométrico de dados em painel com efeitos fixos bidirecionais (município e ano), cobrindo o período de 2008 a 2023 na Região Sudeste do Brasil:</p>
+<p><span class="math display">\[\log(Y_{it}) = \alpha_i + \gamma_t + \beta_{\text{calor}} \cdot \text{ITU}_{it} + \beta_{\text{chuva}} \cdot \text{Chuva}_{it} + \varepsilon_{it}\]</span></p>
+<section id="coeficientes-estruturais-estimados" class="level3" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="coeficientes-estruturais-estimados"><span class="header-section-number">1.0.1</span> Coeficientes Estruturais Estimados</h3>
+<ul>
+<li><strong>Estresse Térmico:</strong> <span class="math inline">\(\beta_{\text{calor}} = -0,00282 \quad (t = -4,17; \ p &lt; 0,001)\)</span></li>
+<li><strong>Disponibilidade Hídrica:</strong> <span class="math inline">\(\beta_{\text{chuva}} = +0,000117 \quad (t = 2,13; \ p &lt; 0,05)\)</span></li>
+</ul>
+<hr>
+</section>
+<section id="o-que-significam-os-interceptos-de-município-e-de-tempo" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="o-que-significam-os-interceptos-de-município-e-de-tempo"><span class="header-section-number">1.1</span> O que significam os Interceptos de Município e de Tempo?</h2>
+<p>A inclusão dos dois conjuntos de interceptos (<span class="math inline">\(\alpha_i\)</span> e <span class="math inline">\(\gamma_t\)</span>) é o que garante o rigor econométrico do modelo, isolando os parâmetros <span class="math inline">\(\beta\)</span> de qualquer viés de variável omitida:</p>
+<section id="intercepto-de-município-alpha_i---efeito-fixo-municipal" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="intercepto-de-município-alpha_i---efeito-fixo-municipal"><span class="header-section-number">1.1.1</span> 1. Intercepto de Município (<span class="math inline">\(\alpha_i\)</span> - Efeito Fixo Municipal)</h3>
+<p>O termo <span class="math inline">\(\alpha_i\)</span> representa um intercepto específico para cada município <span class="math inline">\(i\)</span>, constante ao longo do tempo. Ele absorve toda a <strong>heterogeneidade espacial não observada e invariante no tempo</strong>, tais como:</p>
+<ul>
+<li><strong>Características Físicas e Geográficas:</strong> Relevo predominante, tipos de solo, declividade e altitude média do município.</li>
+<li><strong>Aspectos Estruturais e Históricos:</strong> Tradição cultural e vocação da bacia leiteira local, proximidade histórica com plantas industriais e laticínios, malha viária e infraestrutura básica instalada.</li>
+</ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>🎯 Objetivo deste Relatório
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Este material foi estruturado para apresentar ao orientador (e servir como roteiro visual para a gravação em vídeo) a fundamentação matemática, a lógica de escala e o comportamento espacial da <strong>Equação 3</strong> — responsável por gerar o mapa de <strong>Balanço Climático Líquido (<span class="math inline">\(\Delta\%_{\text{líquido}}\)</span>)</strong> nas pastagens do Sudeste brasileiro.</p>
-<p>O processamento computacional de álgebra de mapas é 100% implementado em <strong>Python</strong> (<code>numpy</code> e <code>rasterio</code>), integrando dados meteorológicos do <strong>INMET</strong>, precipitação do <strong>UNIPLU-BR</strong>, produção do <strong>IBGE (PPM 2008–2023)</strong> e máscara de pastagem da <strong>Coleção 9 do MapBiomas</strong> (33.640 células a ~3 km de resolução).</p>
+<p><strong>Importância:</strong> Sem o <span class="math inline">\(\alpha_i\)</span>, um município mais produtivo devido a solos melhores ou bacias leiteiras consolidadas poderia ser erroneamente interpretado como resultado direto do clima local. O intercepto <span class="math inline">\(\alpha_i\)</span> “limpa” essas diferenças fixas entre localidades.</p>
 </div>
 </div>
-<hr>
-<section id="a-equação-estrutural-do-raster-equação-3" class="level1" data-number="1">
-<h1 data-number="1"><span class="header-section-number">1</span> A Equação Estrutural do Raster (Equação 3)</h1>
-<p>Para você dominar a matemática e explicar com total segurança para o seu orientador, vamos dissecar a <strong>Equação 3</strong> passo a passo:</p>
-<p><span class="math display">\[\Delta\%_{\text{líquido}}(x) = \left(\exp\Big(\beta_{\text{calor}}\cdot(R_{\text{ITU}}(x)-\overline{\text{ITU}}) + \beta_{\text{chuva}}\cdot(R_{\text{Chuva}}(x)-\overline{\text{Chuva}})\Big) - 1\right)\times 100\]</span></p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🎙️ Dica para a Gravação do Vídeo (Abertura da Equação)
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<blockquote class="blockquote">
-<p><em>“Professor, esta equação é o coração da nossa álgebra de mapas. Ela pega a inclinação econométrica dos coeficientes de calor e chuva e traduz diretamente cada pixel em um valor percentual comparativo com a média regional do Sudeste.”</em></p>
-</blockquote>
-</div>
-</div>
-</div>
-<hr>
 </section>
-<section id="de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> 1. De onde vem a estrutura matemática? (A lógica do Log-Linear)</h1>
-<p>O modelo estatístico original estimado em painel de efeitos fixos municipais é uma regressão com a variável dependente em logaritmo:</p>
-<p><span class="math display">\[\log(Y) = \alpha + \beta_{\text{calor}} \cdot \text{ITU} + \beta_{\text{chuva}} \cdot \text{Chuva} + \dots\]</span></p>
-<p>Quando variamos as variáveis explicativas em <span class="math inline">\(\Delta \text{ITU}\)</span> e <span class="math inline">\(\Delta \text{Chuva}\)</span>, a variação esperada no log da produtividade é dada pela diferença entre o valor local e a referência média:</p>
-<p><span class="math display">\[\Delta \log(Y) = \log(Y_{\text{local}}) - \log(Y_{\text{médio}}) = \log\left(\frac{Y_{\text{local}}}{Y_{\text{médio}}}\right)\]</span></p>
-<p>Pela propriedade exponencial inversa da função logarítmica:</p>
-<p><span class="math display">\[\frac{Y_{\text{local}}}{Y_{\text{médio}}} = \exp(\Delta \log(Y))\]</span></p>
-<p>A variação percentual relativa (<span class="math inline">\(\Delta\%\)</span>) de qualquer grandeza física em relação a uma referência é calculada por:</p>
-<p><span class="math display">\[\Delta\% = \left(\frac{Y_{\text{local}} - Y_{\text{médio}}}{Y_{\text{médio}}}\right) \times 100 = \left(\frac{Y_{\text{local}}}{Y_{\text{médio}}} - 1\right) \times 100\]</span></p>
-<p>Substituindo a razão exponencial na fórmula da variação percentual:</p>
-<p><span class="math display">\[\Delta\% = \big(\exp(\Delta \log(Y)) - 1\big) \times 100\]</span></p>
-<p>É exatamente daí que surge a expressão aplicada pixel a pixel na matriz do raster.</p>
-<div class="callout callout-style-default callout-important callout-titled">
+<section id="intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano"><span class="header-section-number">1.1.2</span> 2. Intercepto de Tempo (<span class="math inline">\(\gamma_t\)</span> - Efeito Fixo Temporal / Ano)</h3>
+<p>O termo <span class="math inline">\(\gamma_t\)</span> representa um intercepto comum a todos os municípios em cada ano <span class="math inline">\(t\)</span>. Ele captura <strong>choques macroeconômicos e conjunturais de nível nacional ou regional</strong> que afetam toda a atividade leiteira simultaneamente, tais como:</p>
+<ul>
+<li><strong>Preços e Custos de Produção:</strong> Oscilações no preço nacional pago ao produtor de leite e choques de custos de ração e insumos (especialmente milho e farelo de soja).</li>
+<li><strong>Macroeconomia e Crédito:</strong> Políticas federais de crédito agropecuário (como Pronaf e Plano Safra), taxas de juros, inflação e câmbio.</li>
+<li><strong>Difusão Tecnológica Geral:</strong> Ganhos graduais de genética do rebanho e técnicas de manejo compartilhadas ao longo dos anos.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>💡 Ponto-chave para explicar ao Orientador
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Na econometria, o modelo log-linear mede <strong>semi-elasticidades</strong>. A transformação <span class="math inline">\(\big(\exp(\Delta \log(Y)) - 1\big) \times 100\)</span> é a correção exata (Halvorsen-Palmquist / Kennedy) para transformar a soma linear ponderada dos coeficientes em variação percentual real e não linear sobre o produto.</p>
+<p><strong>Importância:</strong> O intercepto <span class="math inline">\(\gamma_t\)</span> impede que anos de crise econômica ou anos de expansão setorial generalizada distorçam as estimativas de sensibilidade ao calor e à chuva.</p>
 </div>
 </div>
-<hr>
-</section>
-<section id="o-que-significa-centrar-na-média-regional" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> 2. O que significa “centrar na média regional”?</h1>
-<p>Repare nos dois termos de desvio dentro do expoente:</p>
-<p><span class="math display">\[(R_{\text{ITU}}(x) - \overline{\text{ITU}}) \quad \text{e} \quad (R_{\text{Chuva}}(x) - \overline{\text{Chuva}})\]</span></p>
-<p>Onde:</p>
-<ul>
-<li><strong><span class="math inline">\(R_{\text{ITU}}(x)\)</span></strong>: é a frequência crítica de calor (dias com <span class="math inline">\(\text{ITU} &gt; 79\)</span>) naquela célula/pixel específica <span class="math inline">\(x\)</span>.</li>
-<li><strong><span class="math inline">\(\overline{\text{ITU}}\)</span></strong>: é a <strong>média de calor de todas as pastagens do Sudeste</strong> (<span class="math inline">\(\approx 52\text{ dias/ano}\)</span>).</li>
-<li><strong><span class="math inline">\(R_{\text{Chuva}}(x)\)</span></strong>: é a precipitação anual acumulada naquela célula específica <span class="math inline">\(x\)</span>.</li>
-<li><strong><span class="math inline">\(\overline{\text{Chuva}}\)</span></strong>: é a <strong>média pluviométrica de todas as pastagens do Sudeste</strong> (<span class="math inline">\(\approx 1.340\text{ mm/ano}\)</span>).</li>
-</ul>
-<section id="por-que-fazer-essa-subtração" class="level3" data-number="3.0.1">
-<h3 data-number="3.0.1" class="anchored" data-anchor-id="por-que-fazer-essa-subtração"><span class="header-section-number">3.0.1</span> Por que fazer essa subtração?</h3>
-<p>Se não subtraíssemos a média, o raster mostraria a diferença em relação a um cenário hipotético de <em>“zero dias de calor e zero chuva acumulada”</em> — o que não existe na natureza e distorceria qualquer interpretação agronômica.</p>
-<p>Ao subtrair a média regional:</p>
-<ol type="1">
-<li><p><strong>A referência é o clima real da região:</strong> Uma fazenda que experimenta exatamente a média regional de calor e a média de chuva terá desvios nulos: <span class="math display">\[\Delta \log(Y) = \beta_{\text{calor}}\cdot 0 + \beta_{\text{chuva}}\cdot 0 = 0 \implies \exp(0) - 1 = 0\%\]</span></p></li>
-<li><p><strong><span class="math inline">\(0\%\)</span> significa neutralidade:</strong> Representa rigorosamente a média bioclimática das pastagens do Sudeste.</p></li>
-<li><p><strong>Valores positivos (<span class="math inline">\(&gt;0\%\)</span>):</strong> Indicam <strong>vantagens climáticas</strong> (refúgio térmico ou maior disponibilidade hídrica) em relação à média regional.</p></li>
-<li><p><strong>Valores negativos (<span class="math inline">\(&lt;0\%\)</span>):</strong> Indicam <strong>penalidades climáticas líquidas</strong> em relação ao padrão do Sudeste.</p></li>
-</ol>
+<p>Como os efeitos fixos (<span class="math inline">\(\alpha_i\)</span> e <span class="math inline">\(\gamma_t\)</span>) controlam essas fontes de confusão, os coeficientes <span class="math inline">\(\beta_{\text{calor}}\)</span> e <span class="math inline">\(\beta_{\text{chuva}}\)</span> representam a <strong>sensibilidade climática marginal pura</strong> da produtividade leiteira, permitindo sua projeção espacial direta sobre a paisagem forrageira.</p>
 <hr>
 </section>
 </section>
-<section id="as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> 3. As Escalas e as Ordens de Grandeza (Os Coeficientes <span class="math inline">\(\beta\)</span>)</h1>
-<p>Observe a magnitude dos coeficientes estruturais estimados no modelo econométrico (Nota Técnica):</p>
+</section>
+<section id="fontes-de-dados-escalas-e-resoluções-espaciais" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 2. Fontes de Dados, Escalas e Resoluções Espaciais</h1>
+<p>Todos os dados utilizados foram harmonizados para a mesma grade geográfica contínua sobre as pastagens do Sudeste:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 22%">
-<col style="width: 27%">
-<col style="width: 27%">
-<col style="width: 22%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: left;">Fator Climático</th>
-<th style="text-align: center;">Coeficiente (<span class="math inline">\(\beta\)</span>)</th>
-<th style="text-align: center;">Erro-Padrão / Significância</th>
-<th style="text-align: left;">Unidade da Variável</th>
+<th style="text-align: left;">Variável / Produto</th>
+<th style="text-align: left;">Fonte Oficial</th>
+<th style="text-align: left;">Resolução / Escala Original</th>
+<th style="text-align: left;">Resolução de Trabalho</th>
+<th style="text-align: left;">Link Oficial / Referência</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"><strong>Estresse Térmico (Calor)</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_{\text{calor}} = -0,00282\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(t = -4,17 \quad (p &lt; 0,001)\)</span></td>
-<td style="text-align: left;">Dias/ano com <span class="math inline">\(\text{ITU} &gt; 79\)</span></td>
+<td style="text-align: left;"><strong>Estresse Térmico (<span class="math inline">\(\text{ITU}\)</span>)</strong></td>
+<td style="text-align: left;"><a href="https://portal.inmet.gov.br/">INMET (Instituto Nacional de Meteorologia)</a></td>
+<td style="text-align: left;">Dados pontuais horários de estações meteorológicas automáticas</td>
+<td style="text-align: left;">Grade regular <span class="math inline">\(0,02695^\circ\)</span> (~<span class="math inline">\(3,0\text{ km}\)</span> por pixel) via interpolação IDW</td>
+<td style="text-align: left;"><a href="https://bdmep.inmet.gov.br/">BDMEP / INMET</a></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Disponibilidade Hídrica (Chuva)</strong></td>
-<td style="text-align: center;"><span class="math inline">\(\beta_{\text{chuva}} = +0,000117\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(t = +2,13 \quad (p &lt; 0,05)\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(\text{mm/ano}\)</span> acumulados</td>
+<td style="text-align: left;"><strong>Precipitação (<span class="math inline">\(\text{Chuva}\)</span>)</strong></td>
+<td style="text-align: left;"><a href="https://doi.org/10.5281/zenodo.10850027">UNIPLU-BR (Unified Brazilian Rainfall Dataset)</a></td>
+<td style="text-align: left;">Registros diários unificados de mais de 21.000 postos pluviométricos</td>
+<td style="text-align: left;">Grade contínua <span class="math inline">\(0,02695^\circ\)</span> (~<span class="math inline">\(3,0\text{ km}\)</span> por pixel)</td>
+<td style="text-align: left;"><a href="https://doi.org/10.5281/zenodo.10850027">Repositório Zenodo / UNIPLU-BR</a></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>Máscara Temática de Pastagem</strong></td>
+<td style="text-align: left;"><a href="https://brasil.mapbiomas.org/colecoes-mapbiomas/">MapBiomas Brasil (Coleção 9)</a></td>
+<td style="text-align: left;">Resolução espacial de <span class="math inline">\(30\text{ metros}\)</span> (satélite Landsat)</td>
+<td style="text-align: left;">Reamostrado para ~<span class="math inline">\(3,0\text{ km}\)</span> (Classe 15: Pastagem, 33.640 células)</td>
+<td style="text-align: left;"><a href="https://plataforma.brasil.mapbiomas.org/">Plataforma MapBiomas</a></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Produtividade Leiteira Base (<span class="math inline">\(Y\)</span>)</strong></td>
+<td style="text-align: left;"><a href="https://sidra.ibge.gov.br/pesquisa/ppm/quadros-sintese">IBGE — Pesquisa da Pecuária Municipal (PPM)</a></td>
+<td style="text-align: left;">Nível municipal anual (2008–2023)</td>
+<td style="text-align: left;">Atribuído às células forrageiras dos respectivos municípios</td>
+<td style="text-align: left;"><a href="https://sidra.ibge.gov.br/pesquisa/ppm/quadros-sintese">SIDRA / IBGE Tabela 74</a></td>
 </tr>
 </tbody>
 </table>
-<p>À primeira vista, parece que o efeito do calor é muito maior do que o da chuva porque <span class="math inline">\(|-0,00282| &gt; 0,000117\)</span>. Mas aqui entra a <strong>escala das grandezas físicas</strong>:</p>
+<section id="especificações-técnicas-da-grade-espacial-do-sudeste" class="level3" data-number="2.0.1">
+<h3 data-number="2.0.1" class="anchored" data-anchor-id="especificações-técnicas-da-grade-espacial-do-sudeste"><span class="header-section-number">2.0.1</span> Especificações Técnicas da Grade Espacial do Sudeste</h3>
+<ul>
+<li><strong>Sistema de Referência de Coordenadas (CRS):</strong> WGS 84 (EPSG:4326) — Coordenadas Geográficas.</li>
+<li><strong>Extensão Espacial (Bounding Box):</strong> Oeste <span class="math inline">\(-53,12^\circ\)</span>, Leste <span class="math inline">\(-39,64^\circ\)</span>, Sul <span class="math inline">\(-25,33^\circ\)</span>, Norte <span class="math inline">\(-14,23^\circ\)</span>.</li>
+<li><strong>Dimensões da Matriz:</strong> 412 linhas <span class="math inline">\(\times\)</span> 500 colunas (<span class="math inline">\(206.000\)</span> células totais; <span class="math inline">\(33.640\)</span> células com pastagem válida).</li>
+<li><strong>Formato e Compressão:</strong> GeoTIFF (.tif) com compressão LZW sem perdas e NoData nativo em NaN.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="a-equação-estrutural-do-raster-equação-3" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3. A Equação Estrutural do Raster (Equação 3)</h1>
+<p>Com os coeficientes marginais <span class="math inline">\(\beta\)</span> isolados pelo modelo econométrico, a projeção espacial da taxa percentual líquida sobre cada célula de pastagem <span class="math inline">\(x = (\text{lon}, \text{lat})\)</span> é dada pela <strong>Equação 3</strong>:</p>
+<p><span class="math display">\[\Delta\%_{\text{líquido}}(x) = \left(\exp\Big(\beta_{\text{calor}}\cdot(R_{\text{ITU}}(x)-\overline{\text{ITU}}) + \beta_{\text{chuva}}\cdot(R_{\text{Chuva}}(x)-\overline{\text{Chuva}})\Big) - 1\right)\times 100\]</span></p>
+<hr>
+<section id="de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="de-onde-vem-a-estrutura-matemática-a-lógica-do-log-linear"><span class="header-section-number">3.1</span> De onde vem a estrutura matemática? (A lógica do Log-Linear)</h2>
+<p>O modelo estatístico original tem a variável dependente em logaritmo:</p>
+<p><span class="math display">\[\log(Y) = \alpha + \beta_{\text{calor}} \cdot \text{ITU} + \beta_{\text{chuva}} \cdot \text{Chuva} + \dots\]</span></p>
+<p>Quando variamos as variáveis explicativas em <span class="math inline">\(\Delta \text{ITU}\)</span> e <span class="math inline">\(\Delta \text{Chuva}\)</span>, a variação esperada no log da produtividade é dada pela diferença entre a produtividade local esperada e a referência média:</p>
+<p><span class="math display">\[\Delta \log(Y) = \log(Y_{\text{local}}) - \log(Y_{\text{médio}}) = \log\left(\frac{Y_{\text{local}}}{Y_{\text{médio}}}\right)\]</span></p>
+<p>Pela propriedade exponencial inversa:</p>
+<p><span class="math display">\[\frac{Y_{\text{local}}}{Y_{\text{médio}}} = \exp(\Delta \log(Y))\]</span></p>
+<p>A variação percentual relativa (<span class="math inline">\(\Delta\%\)</span>) de qualquer grandeza em relação à sua média é:</p>
+<p><span class="math display">\[\Delta\% = \left(\frac{Y_{\text{local}} - Y_{\text{médio}}}{Y_{\text{médio}}}\right) \times 100 = \left(\frac{Y_{\text{local}}}{Y_{\text{médio}}} - 1\right) \times 100\]</span></p>
+<p>Substituindo a razão exponencial:</p>
+<p><span class="math display">\[\Delta\% = \big(\exp(\Delta \log(Y)) - 1\big) \times 100\]</span></p>
+<p>Esta é a correção exata que permite converter a soma linear ponderada dos coeficientes em uma taxa percentual relativa direta em cada pixel do raster.</p>
+<hr>
+</section>
+<section id="o-que-significa-centrar-na-média-regional" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="o-que-significa-centrar-na-média-regional"><span class="header-section-number">3.2</span> O que significa “centrar na média regional”?</h2>
+<p>Dentro do parêntese da equação encontram-se os dois termos de afastamento:</p>
+<p><span class="math display">\[(R_{\text{ITU}}(x) - \overline{\text{ITU}}) \quad \text{e} \quad (R_{\text{Chuva}}(x) - \overline{\text{Chuva}})\]</span></p>
+<ul>
+<li><strong><span class="math inline">\(R_{\text{ITU}}(x)\)</span></strong>: Frequência de calor crítico (dias/ano com <span class="math inline">\(\text{ITU} &gt; 79\)</span>) na célula <span class="math inline">\(x\)</span>.</li>
+<li><strong><span class="math inline">\(\overline{\text{ITU}}\)</span></strong>: Média de calor de todas as pastagens do Sudeste (<span class="math inline">\(\approx 52\text{ dias/ano}\)</span>).</li>
+<li><strong><span class="math inline">\(R_{\text{Chuva}}(x)\)</span></strong>: Precipitação anual acumulada na célula <span class="math inline">\(x\)</span>.</li>
+<li><strong><span class="math inline">\(\overline{\text{Chuva}}\)</span></strong>: Média pluviométrica de todas as pastagens do Sudeste (<span class="math inline">\(\approx 1.340\text{ mm/ano}\)</span>).</li>
+</ul>
+<section id="por-que-centrar-na-média" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="por-que-centrar-na-média"><span class="header-section-number">3.2.1</span> Por que centrar na média?</h3>
+<p>Se não subtraíssemos a média regional, o raster mostraria a diferença em relação a um cenário hipotético de “zero dias de calor e zero chuva” (inexistente na natureza). Ao subtrair a média:</p>
+<ul>
+<li>Uma localidade que tem exatamente a média regional de calor e de chuva terá: <span class="math display">\[\Delta \log(Y) = \beta_{\text{calor}}\cdot 0 + \beta_{\text{chuva}}\cdot 0 = 0 \implies \exp(0) - 1 = 0\%\]</span></li>
+<li><strong><span class="math inline">\(0\%\)</span> representa rigorosamente a média bioclimática das pastagens do Sudeste</strong>.</li>
+<li><strong>Valores positivos (<span class="math inline">\(&gt;0\%\)</span>):</strong> Indicam vantagem climática comparativa em relação à média regional.</li>
+<li><strong>Valores negativos (<span class="math inline">\(&lt;0\%\)</span>):</strong> Indicam desvantagem / penalidade climática em relação à média regional.</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="as-escalas-e-as-ordens-de-grandeza-os-coeficientes-beta" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4. As Escalas e as Ordens de Grandeza (Os Coeficientes <span class="math inline">\(\beta\)</span>)</h1>
+<p>Observe os valores estimados:</p>
+<ul>
+<li><span class="math inline">\(\beta_{\text{calor}} = -0,00282\)</span></li>
+<li><span class="math inline">\(\beta_{\text{chuva}} = +0,000117\)</span></li>
+</ul>
+<p>A disparidade na magnitude dos coeficientes deve-se à <strong>unidade física de cada variável</strong>:</p>
 <section id="a.-a-escala-do-calor-r_textitu" class="level3" data-number="4.0.1">
 <h3 data-number="4.0.1" class="anchored" data-anchor-id="a.-a-escala-do-calor-r_textitu"><span class="header-section-number">4.0.1</span> A. A Escala do Calor (<span class="math inline">\(R_{\text{ITU}}\)</span>)</h3>
 <ul>
 <li><strong>Unidade:</strong> Dias no ano com Índice de Temperatura e Umidade crítico (<span class="math inline">\(\text{ITU} &gt; 79\)</span>).</li>
-<li><strong>Faixa de variação:</strong> Varia de cerca de <span class="math inline">\(0\)</span> dias/ano (nas montanhas do Sul de MG e Mantiqueira) até mais de <span class="math inline">\(160\)</span> dias/ano (no Norte de MG e Noroeste de SP). A amplitude regional é de cerca de <span class="math inline">\(150\)</span> dias.</li>
-<li><strong>Impacto isolado no expoente:</strong> Se um local tem <span class="math inline">\(50\)</span> dias a mais de estresse térmico que a média regional (<span class="math inline">\(\Delta \text{ITU} = +50\)</span>): <span class="math display">\[\Delta \text{expoente}_{\text{calor}} = -0,00282 \times (+50) = -0,141\]</span> <span class="math display">\[\exp(-0,141) - 1 \approx -13,1\%\]</span></li>
+<li><strong>Amplitude de variação:</strong> Varia de cerca de <span class="math inline">\(0\)</span> dias/ano (zonas serranas do Sul de MG e Mantiqueira) até mais de <span class="math inline">\(160\)</span> dias/ano (Norte de MG e Noroeste paulista). A amplitude é de cerca de <span class="math inline">\(150\)</span> dias.</li>
+<li><strong>Impacto isolado no expoente (+50 dias de estresse):</strong> <span class="math display">\[\Delta \text{expoente}_{\text{calor}} = -0,00282 \times (+50) = -0,141\]</span> <span class="math display">\[\exp(-0,141) - 1 \approx -13,1\%\]</span></li>
 </ul>
 </section>
 <section id="b.-a-escala-da-chuva-r_textchuva" class="level3" data-number="4.0.2">
 <h3 data-number="4.0.2" class="anchored" data-anchor-id="b.-a-escala-da-chuva-r_textchuva"><span class="header-section-number">4.0.2</span> B. A Escala da Chuva (<span class="math inline">\(R_{\text{Chuva}}\)</span>)</h3>
 <ul>
 <li><strong>Unidade:</strong> Milímetros de chuva acumulada ao ano (<span class="math inline">\(\text{mm/ano}\)</span>).</li>
-<li><strong>Faixa de variação:</strong> No Sudeste, a precipitação anual varia tipicamente de <span class="math inline">\(\approx 800\text{ mm}\)</span> (semiárido/Norte mineiro) até <span class="math inline">\(\approx 2.000\text{ mm}\)</span> (zonas serranas e litoral), gerando desvios em relação à média de <span class="math inline">\(\pm 500\text{ mm}\)</span> ou mais.</li>
-<li><strong>Impacto isolado no expoente:</strong> Se um local recebe <span class="math inline">\(500\text{ mm}\)</span> a mais de chuva que a média regional (<span class="math inline">\(\Delta \text{Chuva} = +500\)</span>): <span class="math display">\[\Delta \text{expoente}_{\text{chuva}} = +0,000117 \times (+500) = +0,0585\]</span> <span class="math display">\[\exp(+0,0585) - 1 \approx +6,0\%\]</span></li>
+<li><strong>Amplitude de variação:</strong> No Sudeste, varia de <span class="math inline">\(\approx 800\text{ mm}\)</span> (Norte mineiro) até <span class="math inline">\(\approx 2.000\text{ mm}\)</span> (litoral e serras), gerando desvios de <span class="math inline">\(\pm 500\text{ mm}\)</span> ou mais em relação à média.</li>
+<li><strong>Impacto isolado no expoente (+500 mm de chuva):</strong> <span class="math display">\[\Delta \text{expoente}_{\text{chuva}} = +0,000117 \times (+500) = +0,0585\]</span> <span class="math display">\[\exp(+0,0585) - 1 \approx +6,0\%\]</span></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -381,26 +426,26 @@ window.Quarto = {
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>⚖️ Conclusão sobre as escalas físicas
+Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>O coeficiente <span class="math inline">\(\beta_{\text{chuva}}\)</span> é menor na quarta casa decimal porque ele é multiplicado por centenas de milímetros, enquanto <span class="math inline">\(\beta_{\text{calor}}\)</span> multiplica dezenas de dias. Contudo, como o estresse térmico exerce forte peso biológico sobre o gado leiteiro, <strong>nas regiões tórridas a penalidade do calor supera com folga o alívio que a chuva possa fornecer</strong>.</p>
+<p><strong>Conclusão sobre a escala:</strong> O coeficiente da chuva é menor na quarta casa decimal porque multiplica grandezas em centenas de milímetros, enquanto o calor multiplica dezenas de dias. Como o estresse fisiológico do calor é pronunciado, nas regiões de altas temperaturas a penalidade térmica supera expressivamente o efeito mitigador da precipitação.</p>
 </div>
 </div>
 <hr>
 </section>
 </section>
-<section id="como-esse-cálculo-se-comporta-na-prática-dois-exemplos-reais" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 4. Como esse cálculo se comporta na prática (Dois exemplos reais)</h1>
-<p>Para mostrar ao seu orientador como o pixel adquire sua tonalidade no mapa e no QGIS, analisemos dois locais contrastantes do Sudeste:</p>
+<section id="comportamento-espacial-e-aplicação-prática" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. Comportamento Espacial e Aplicação Prática</h1>
+<p>Abaixo visualiza-se a correspondência espacial entre a ocorrência de calor crítico e o balanço climático final projetado pela Equação 3:</p>
 <div id="fig-zoneamento" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-zoneamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <img src="assets/images/figura_1_zoneamento.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoneamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Dias em estresse crítico (ITU &gt; 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.
+Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Frequência anual de dias em estresse crítico (ITU &gt; 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.
 </figcaption>
 </figure>
 </div>
@@ -409,56 +454,48 @@ Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leitei
 <h4 data-number="5.0.0.1" class="anchored" data-anchor-id="cenário-1-norte-de-minas-gerais"><span class="header-section-number">5.0.0.1</span> 🔴 Cenário 1: Norte de Minas Gerais</h4>
 <p><strong>Região de Penalidade Severa (Tom Vermelho no Mapa)</strong></p>
 <ul>
-<li><strong>Condições Climáticas:</strong>
-<ul>
-<li><span class="math inline">\(\Delta \text{ITU} = +70\text{ dias}\)</span> acima da média regional</li>
-<li><span class="math inline">\(\Delta \text{Chuva} = -300\text{ mm}\)</span> abaixo da média regional</li>
-</ul></li>
+<li><strong>Clima:</strong> Região com <span class="math inline">\(\Delta \text{ITU} = +70\text{ dias}\)</span> acima da média e déficit de precipitação de <span class="math inline">\(\Delta \text{Chuva} = -300\text{ mm}\)</span> abaixo da média.</li>
 <li><strong>Cálculo da variação do log:</strong> <span class="math display">\[\Delta \log(Y) = (-0,00282 \times 70) + (0,000117 \times (-300))\]</span> <span class="math display">\[\Delta \log(Y) = -0,1974 - 0,0351 = -0,2325\]</span></li>
 <li><strong>Impacto Percentual Final:</strong> <span class="math display">\[\Delta\% = (\exp(-0,2325) - 1) \times 100 \approx -20,75\%\]</span></li>
-<li><strong>Resultado Cartográfico:</strong> Como o valor é de <strong><span class="math inline">\(\approx -21\%\)</span></strong>, o pixel recebe tonalidade vermelha intensa (forte penalidade climática sobre o rendimento das vacas).</li>
+<li><strong>Comportamento Cartográfico:</strong> Pixel adquire tom vermelho intenso, assinalando perda de produtividade superior a <span class="math inline">\(20\%\)</span> em relação à média regional.</li>
 </ul>
 </section>
-<section id="cenário-2-sul-de-minas-mantiqueira" class="level4 scenario-card scenario-blue" data-number="5.0.0.2">
-<h4 data-number="5.0.0.2" class="anchored" data-anchor-id="cenário-2-sul-de-minas-mantiqueira"><span class="header-section-number">5.0.0.2</span> 🔵 Cenário 2: Sul de Minas / Mantiqueira</h4>
+<section id="cenário-2-sul-de-minas-serra-da-mantiqueira" class="level4 scenario-card scenario-blue" data-number="5.0.0.2">
+<h4 data-number="5.0.0.2" class="anchored" data-anchor-id="cenário-2-sul-de-minas-serra-da-mantiqueira"><span class="header-section-number">5.0.0.2</span> 🔵 Cenário 2: Sul de Minas / Serra da Mantiqueira</h4>
 <p><strong>Região de Refúgio Térmico (Tom Azul no Mapa)</strong></p>
 <ul>
-<li><strong>Condições Climáticas:</strong>
-<ul>
-<li><span class="math inline">\(\Delta \text{ITU} = -40\text{ dias}\)</span> (praticamente isento de calor crítico)</li>
-<li><span class="math inline">\(\Delta \text{Chuva} = +200\text{ mm}\)</span> acima da média regional</li>
-</ul></li>
+<li><strong>Clima:</strong> Altitude elevada com <span class="math inline">\(\Delta \text{ITU} = -40\text{ dias}\)</span> (praticamente nulo) e <span class="math inline">\(\Delta \text{Chuva} = +200\text{ mm}\)</span> acima da média.</li>
 <li><strong>Cálculo da variação do log:</strong> <span class="math display">\[\Delta \log(Y) = (-0,00282 \times (-40)) + (0,000117 \times 200)\]</span> <span class="math display">\[\Delta \log(Y) = +0,1128 + 0,0234 = +0,1362\]</span></li>
 <li><strong>Impacto Percentual Final:</strong> <span class="math display">\[\Delta\% = (\exp(0,1362) - 1) \times 100 \approx +14,59\%\]</span></li>
-<li><strong>Resultado Cartográfico:</strong> Como o valor é <strong><span class="math inline">\(+14,6\%\)</span></strong>, o pixel fica destacado em azul (vantagem produtiva decorrente do conforto bioclimático).</li>
+<li><strong>Comportamento Cartográfico:</strong> Pixel adquire tom azul, representando ganho relativo de produtividade de quase <span class="math inline">\(15\%\)</span> frente à média das pastagens do Sudeste.</li>
 </ul>
 </section>
 </div>
 <hr>
 </section>
 <section id="implementação-vetorizada-em-python" class="level1" data-number="6">
-<h1 data-number="6"><span class="header-section-number">6</span> 4.1 Implementação Vetorizada em Python</h1>
-<p>No ambiente de pesquisa, o cálculo da Equação 3 é executado em matrizes contínuas com <strong>Python</strong> (<code>numpy</code> e <code>rasterio</code>). O código opera diretamente sobre as células mascaradas de pastagem:</p>
+<h1 data-number="6"><span class="header-section-number">6</span> 6. Implementação Vetorizada em Python</h1>
+<p>A rotina computacional em <strong>Python</strong> realiza a álgebra de mapas sobre a máscara estrita da Coleção 9 do MapBiomas:</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> rasterio</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Parâmetros estruturais estimados no modelo econométrico</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Coeficientes do modelo econométrico</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>BETA_CALOR <span class="op">=</span> <span class="op">-</span><span class="fl">0.00282</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>BETA_CHUVA <span class="op">=</span> <span class="op">+</span><span class="fl">0.000117</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Leitura das matrizes raster</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Carregamento dos rasters contínuos</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> rasterio.<span class="bu">open</span>(<span class="st">"itu_inmet_anual_3km.tif"</span>) <span class="im">as</span> src_itu, <span class="op">\</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>     rasterio.<span class="bu">open</span>(<span class="st">"chuva_uniplu_anual.tif"</span>) <span class="im">as</span> src_chuva, <span class="op">\</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>     rasterio.<span class="bu">open</span>(<span class="st">"mascara_pastagem_mapbiomas.tif"</span>) <span class="im">as</span> src_mask:</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    </span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    mat_itu <span class="op">=</span> src_itu.read(<span class="dv">1</span>)</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    mat_chuva <span class="op">=</span> src_chuva.read(<span class="dv">1</span>)</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    mask_pastagem <span class="op">=</span> src_mask.read(<span class="dv">1</span>) <span class="op">==</span> <span class="dv">15</span>  <span class="co"># Classe 15: Pastagem</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    mask_pastagem <span class="op">=</span> src_mask.read(<span class="dv">1</span>) <span class="op">==</span> <span class="dv">15</span>  <span class="co"># Classe 15: Pastagem (MapBiomas Col 9)</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Validação de dados finitos sobre as pastagens</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Validação e mascaramento estrito</span></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>valid <span class="op">=</span> mask_pastagem <span class="op">&amp;</span> np.isfinite(mat_itu) <span class="op">&amp;</span> np.isfinite(mat_chuva)</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo centrado na média das pastagens do Sudeste</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Médias regionais das pastagens do Sudeste</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>media_itu <span class="op">=</span> np.mean(mat_itu[valid])</span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>media_chuva <span class="op">=</span> np.mean(mat_chuva[valid])</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
@@ -466,16 +503,13 @@ Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leitei
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>d_log <span class="op">=</span> (BETA_CALOR <span class="op">*</span> (mat_itu[valid] <span class="op">-</span> media_itu)) <span class="op">+</span> <span class="op">\</span></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        (BETA_CHUVA <span class="op">*</span> (mat_chuva[valid] <span class="op">-</span> media_chuva))</span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Conversão exponencial para taxa percentual (%)</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Conversão percentual relativa</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>liq_pct <span class="op">=</span> np.full(mat_itu.shape, np.nan, dtype<span class="op">=</span>np.float32)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>liq_pct[valid] <span class="op">=</span> (np.exp(d_log) <span class="op">-</span> <span class="fl">1.0</span>) <span class="op">*</span> <span class="fl">100.0</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Balanço Climático Médio: </span><span class="sc">{</span>np<span class="sc">.</span>mean(liq_pct[valid])<span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>liq_pct[valid] <span class="op">=</span> (np.exp(d_log) <span class="op">-</span> <span class="fl">1.0</span>) <span class="op">*</span> <span class="fl">100.0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
-<section id="resumo-em-3-frases-para-dizer-ao-seu-orientador" class="level1" data-number="7">
-<h1 data-number="7"><span class="header-section-number">7</span> 5. Resumo em 3 Frases para dizer ao seu Orientador</h1>
-<p>Ao gravar seu vídeo ou conduzir sua reunião de orientação, use este roteiro conciso para sintetizar todo o trabalho:</p>
+<section id="resumo-em-3-frases-para-o-orientador" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 7. Resumo em 3 Frases para o Orientador</h1>
 <div class="summary-sentence">
 <p><strong>1.</strong> <em>“Cada pixel deste raster é o resultado de uma função exponencial que converte a elasticidade do modelo econométrico numa taxa percentual direta.”</em></p>
 </div>
@@ -484,24 +518,6 @@ Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leitei
 </div>
 <div class="summary-sentence">
 <p><strong>3.</strong> <em>“O modelo pondera os dois fatores simultaneamente: cada dia a mais de estresse térmico drena cerca de 0,28% da produtividade diária por vaca, enquanto a disponibilidade hídrica atua como amenizadora.”</em></p>
-</div>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>🎬 Sugestão de Fechamento do Vídeo
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<blockquote class="blockquote">
-<p><em>“Professor, com essa formulação conseguimos transpor um modelo econométrico de painel para uma matriz geográfica contínua de alta precisão. Na próxima etapa, aplicamos essa taxa sobre a produtividade base municipal para quantificar a perda física real em litros de leite por vaca ao ano.”</em></p>
-</blockquote>
-</div>
-</div>
 </div>
 
 

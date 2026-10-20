@@ -1,141 +1,167 @@
 ---
 title: "Projeção Espacial do Modelo Bioclimático de Produtividade Leiteira"
-subtitle: "Dissecação Matemática e Didática da Equação 3: Balanço Climático Líquido no Sudeste Brasileiro"
-author: "Pesquisa em Geodados & Pecuária Leiteira"
-date: today
-date-format: "DD/MM/YYYY"
+subtitle: "Fundamentação Econométrica, Fontes de Dados e Álgebra Espacial da Equação 3 no Sudeste Brasileiro"
 format:
   html:
     toc: true
     toc-depth: 3
-    toc-title: "Nesta Apresentação"
+    toc-title: "Sumário do Relatório"
     number-sections: true
     code-fold: show
     code-summary: "Exibir Código Python"
 ---
 
-::: {.callout-note}
-## 🎯 Objetivo deste Relatório
-Este material foi estruturado para apresentar ao orientador (e servir como roteiro visual para a gravação em vídeo) a fundamentação matemática, a lógica de escala e o comportamento espacial da **Equação 3** — responsável por gerar o mapa de **Balanço Climático Líquido ($\Delta\%_{\text{líquido}}$)** nas pastagens do Sudeste brasileiro.
+# 1. O Modelo Econométrico de Painel
 
-O processamento computacional de álgebra de mapas é 100% implementado em **Python** (`numpy` e `rasterio`), integrando dados meteorológicos do **INMET**, precipitação do **UNIPLU-BR**, produção do **IBGE (PPM 2008–2023)** e máscara de pastagem da **Coleção 9 do MapBiomas** (33.640 células a ~3 km de resolução).
-:::
+A modelagem estrutural baseia-se em um modelo econométrico de dados em painel com efeitos fixos bidirecionais (município e ano), cobrindo o período de 2008 a 2023 na Região Sudeste do Brasil:
+
+$$\log(Y_{it}) = \alpha_i + \gamma_t + \beta_{\text{calor}} \cdot \text{ITU}_{it} + \beta_{\text{chuva}} \cdot \text{Chuva}_{it} + \varepsilon_{it}$$
+
+### Coeficientes Estruturais Estimados
+
+* **Estresse Térmico:** $\beta_{\text{calor}} = -0,00282 \quad (t = -4,17; \ p < 0,001)$
+* **Disponibilidade Hídrica:** $\beta_{\text{chuva}} = +0,000117 \quad (t = 2,13; \ p < 0,05)$
 
 ---
 
-# A Equação Estrutural do Raster (Equação 3)
+## O que significam os Interceptos de Município e de Tempo?
 
-Para você dominar a matemática e explicar com total segurança para o seu orientador, vamos dissecar a **Equação 3** passo a passo:
+A inclusão dos dois conjuntos de interceptos ($\alpha_i$ e $\gamma_t$) é o que garante o rigor econométrico do modelo, isolando os parâmetros $\beta$ de qualquer viés de variável omitida:
+
+### 1. Intercepto de Município ($\alpha_i$ - Efeito Fixo Municipal)
+O termo $\alpha_i$ representa um intercepto específico para cada município $i$, constante ao longo do tempo. Ele absorve toda a **heterogeneidade espacial não observada e invariante no tempo**, tais como:
+
+* **Características Físicas e Geográficas:** Relevo predominante, tipos de solo, declividade e altitude média do município.
+* **Aspectos Estruturais e Históricos:** Tradição cultural e vocação da bacia leiteira local, proximidade histórica com plantas industriais e laticínios, malha viária e infraestrutura básica instalada.
+
+::: {.callout-note}
+**Importância:** Sem o $\alpha_i$, um município mais produtivo devido a solos melhores ou bacias leiteiras consolidadas poderia ser erroneamente interpretado como resultado direto do clima local. O intercepto $\alpha_i$ "limpa" essas diferenças fixas entre localidades.
+:::
+
+### 2. Intercepto de Tempo ($\gamma_t$ - Efeito Fixo Temporal / Ano)
+O termo $\gamma_t$ representa um intercepto comum a todos os municípios em cada ano $t$. Ele captura **choques macroeconômicos e conjunturais de nível nacional ou regional** que afetam toda a atividade leiteira simultaneamente, tais como:
+
+* **Preços e Custos de Produção:** Oscilações no preço nacional pago ao produtor de leite e choques de custos de ração e insumos (especialmente milho e farelo de soja).
+* **Macroeconomia e Crédito:** Políticas federais de crédito agropecuário (como Pronaf e Plano Safra), taxas de juros, inflação e câmbio.
+* **Difusão Tecnológica Geral:** Ganhos graduais de genética do rebanho e técnicas de manejo compartilhadas ao longo dos anos.
+
+::: {.callout-note}
+**Importância:** O intercepto $\gamma_t$ impede que anos de crise econômica ou anos de expansão setorial generalizada distorçam as estimativas de sensibilidade ao calor e à chuva.
+:::
+
+Como os efeitos fixos ($\alpha_i$ e $\gamma_t$) controlam essas fontes de confusão, os coeficientes $\beta_{\text{calor}}$ e $\beta_{\text{chuva}}$ representam a **sensibilidade climática marginal pura** da produtividade leiteira, permitindo sua projeção espacial direta sobre a paisagem forrageira.
+
+---
+
+# 2. Fontes de Dados, Escalas e Resoluções Espaciais
+
+Todos os dados utilizados foram harmonizados para a mesma grade geográfica contínua sobre as pastagens do Sudeste:
+
+| Variável / Produto | Fonte Oficial | Resolução / Escala Original | Resolução de Trabalho | Link Oficial / Referência |
+| :--- | :--- | :--- | :--- | :--- |
+| **Estresse Térmico ($\text{ITU}$)** | [INMET (Instituto Nacional de Meteorologia)](https://portal.inmet.gov.br/) | Dados pontuais horários de estações meteorológicas automáticas | Grade regular $0,02695^\circ$ (~$3,0\text{ km}$ por pixel) via interpolação IDW | [BDMEP / INMET](https://bdmep.inmet.gov.br/) |
+| **Precipitação ($\text{Chuva}$)** | [UNIPLU-BR (Unified Brazilian Rainfall Dataset)](https://doi.org/10.5281/zenodo.10850027) | Registros diários unificados de mais de 21.000 postos pluviométricos | Grade contínua $0,02695^\circ$ (~$3,0\text{ km}$ por pixel) | [Repositório Zenodo / UNIPLU-BR](https://doi.org/10.5281/zenodo.10850027) |
+| **Máscara Temática de Pastagem** | [MapBiomas Brasil (Coleção 9)](https://brasil.mapbiomas.org/colecoes-mapbiomas/) | Resolução espacial de $30\text{ metros}$ (satélite Landsat) | Reamostrado para ~$3,0\text{ km}$ (Classe 15: Pastagem, 33.640 células) | [Plataforma MapBiomas](https://plataforma.brasil.mapbiomas.org/) |
+| **Produtividade Leiteira Base ($Y$)** | [IBGE — Pesquisa da Pecuária Municipal (PPM)](https://sidra.ibge.gov.br/pesquisa/ppm/quadros-sintese) | Nível municipal anual (2008–2023) | Atribuído às células forrageiras dos respectivos municípios | [SIDRA / IBGE Tabela 74](https://sidra.ibge.gov.br/pesquisa/ppm/quadros-sintese) |
+
+### Especificações Técnicas da Grade Espacial do Sudeste
+* **Sistema de Referência de Coordenadas (CRS):** WGS 84 (EPSG:4326) — Coordenadas Geográficas.
+* **Extensão Espacial (Bounding Box):** Oeste $-53,12^\circ$, Leste $-39,64^\circ$, Sul $-25,33^\circ$, Norte $-14,23^\circ$.
+* **Dimensões da Matriz:** 412 linhas $\times$ 500 colunas ($206.000$ células totais; $33.640$ células com pastagem válida).
+* **Formato e Compressão:** GeoTIFF (.tif) com compressão LZW sem perdas e NoData nativo em NaN.
+
+---
+
+# 3. A Equação Estrutural do Raster (Equação 3)
+
+Com os coeficientes marginais $\beta$ isolados pelo modelo econométrico, a projeção espacial da taxa percentual líquida sobre cada célula de pastagem $x = (\text{lon}, \text{lat})$ é dada pela **Equação 3**:
 
 $$\Delta\%_{\text{líquido}}(x) = \left(\exp\Big(\beta_{\text{calor}}\cdot(R_{\text{ITU}}(x)-\overline{\text{ITU}}) + \beta_{\text{chuva}}\cdot(R_{\text{Chuva}}(x)-\overline{\text{Chuva}})\Big) - 1\right)\times 100$$
 
-::: {.callout-tip collapse="true"}
-## 🎙️ Dica para a Gravação do Vídeo (Abertura da Equação)
-> *"Professor, esta equação é o coração da nossa álgebra de mapas. Ela pega a inclinação econométrica dos coeficientes de calor e chuva e traduz diretamente cada pixel em um valor percentual comparativo com a média regional do Sudeste."*
-:::
-
 ---
 
-# 1. De onde vem a estrutura matemática? (A lógica do Log-Linear)
+## De onde vem a estrutura matemática? (A lógica do Log-Linear)
 
-O modelo estatístico original estimado em painel de efeitos fixos municipais é uma regressão com a variável dependente em logaritmo:
+O modelo estatístico original tem a variável dependente em logaritmo:
 
 $$\log(Y) = \alpha + \beta_{\text{calor}} \cdot \text{ITU} + \beta_{\text{chuva}} \cdot \text{Chuva} + \dots$$
 
-Quando variamos as variáveis explicativas em $\Delta \text{ITU}$ e $\Delta \text{Chuva}$, a variação esperada no log da produtividade é dada pela diferença entre o valor local e a referência média:
+Quando variamos as variáveis explicativas em $\Delta \text{ITU}$ e $\Delta \text{Chuva}$, a variação esperada no log da produtividade é dada pela diferença entre a produtividade local esperada e a referência média:
 
 $$\Delta \log(Y) = \log(Y_{\text{local}}) - \log(Y_{\text{médio}}) = \log\left(\frac{Y_{\text{local}}}{Y_{\text{médio}}}\right)$$
 
-Pela propriedade exponencial inversa da função logarítmica:
+Pela propriedade exponencial inversa:
 
 $$\frac{Y_{\text{local}}}{Y_{\text{médio}}} = \exp(\Delta \log(Y))$$
 
-A variação percentual relativa ($\Delta\%$) de qualquer grandeza física em relação a uma referência é calculada por:
+A variação percentual relativa ($\Delta\%$) de qualquer grandeza em relação à sua média é:
 
 $$\Delta\% = \left(\frac{Y_{\text{local}} - Y_{\text{médio}}}{Y_{\text{médio}}}\right) \times 100 = \left(\frac{Y_{\text{local}}}{Y_{\text{médio}}} - 1\right) \times 100$$
 
-Substituindo a razão exponencial na fórmula da variação percentual:
+Substituindo a razão exponencial:
 
 $$\Delta\% = \big(\exp(\Delta \log(Y)) - 1\big) \times 100$$
 
-É exatamente daí que surge a expressão aplicada pixel a pixel na matriz do raster.
-
-::: {.callout-important}
-## 💡 Ponto-chave para explicar ao Orientador
-Na econometria, o modelo log-linear mede **semi-elasticidades**. A transformação $\big(\exp(\Delta \log(Y)) - 1\big) \times 100$ é a correção exata (Halvorsen-Palmquist / Kennedy) para transformar a soma linear ponderada dos coeficientes em variação percentual real e não linear sobre o produto.
-:::
+Esta é a correção exata que permite converter a soma linear ponderada dos coeficientes em uma taxa percentual relativa direta em cada pixel do raster.
 
 ---
 
-# 2. O que significa "centrar na média regional"?
+## O que significa "centrar na média regional"?
 
-Repare nos dois termos de desvio dentro do expoente:
+Dentro do parêntese da equação encontram-se os dois termos de afastamento:
 
 $$(R_{\text{ITU}}(x) - \overline{\text{ITU}}) \quad \text{e} \quad (R_{\text{Chuva}}(x) - \overline{\text{Chuva}})$$
 
-Onde:
+* **$R_{\text{ITU}}(x)$**: Frequência de calor crítico (dias/ano com $\text{ITU} > 79$) na célula $x$.
+* **$\overline{\text{ITU}}$**: Média de calor de todas as pastagens do Sudeste ($\approx 52\text{ dias/ano}$).
+* **$R_{\text{Chuva}}(x)$**: Precipitação anual acumulada na célula $x$.
+* **$\overline{\text{Chuva}}$**: Média pluviométrica de todas as pastagens do Sudeste ($\approx 1.340\text{ mm/ano}$).
 
-* **$R_{\text{ITU}}(x)$**: é a frequência crítica de calor (dias com $\text{ITU} > 79$) naquela célula/pixel específica $x$.
-* **$\overline{\text{ITU}}$**: é a **média de calor de todas as pastagens do Sudeste** ($\approx 52\text{ dias/ano}$).
-* **$R_{\text{Chuva}}(x)$**: é a precipitação anual acumulada naquela célula específica $x$.
-* **$\overline{\text{Chuva}}$**: é a **média pluviométrica de todas as pastagens do Sudeste** ($\approx 1.340\text{ mm/ano}$).
+### Por que centrar na média?
+Se não subtraíssemos a média regional, o raster mostraria a diferença em relação a um cenário hipotético de "zero dias de calor e zero chuva" (inexistente na natureza). Ao subtrair a média:
 
-### Por que fazer essa subtração?
-
-Se não subtraíssemos a média, o raster mostraria a diferença em relação a um cenário hipotético de *"zero dias de calor e zero chuva acumulada"* — o que não existe na natureza e distorceria qualquer interpretação agronômica. 
-
-Ao subtrair a média regional:
-
-1. **A referência é o clima real da região:** Uma fazenda que experimenta exatamente a média regional de calor e a média de chuva terá desvios nulos:
-   $$\Delta \log(Y) = \beta_{\text{calor}}\cdot 0 + \beta_{\text{chuva}}\cdot 0 = 0 \implies \exp(0) - 1 = 0\%$$
-
-2. **$0\%$ significa neutralidade:** Representa rigorosamente a média bioclimática das pastagens do Sudeste.
-3. **Valores positivos ($>0\%$):** Indicam **vantagens climáticas** (refúgio térmico ou maior disponibilidade hídrica) em relação à média regional.
-4. **Valores negativos ($<0\%$):** Indicam **penalidades climáticas líquidas** em relação ao padrão do Sudeste.
+* Uma localidade que tem exatamente a média regional de calor e de chuva terá:
+  $$\Delta \log(Y) = \beta_{\text{calor}}\cdot 0 + \beta_{\text{chuva}}\cdot 0 = 0 \implies \exp(0) - 1 = 0\%$$
+* **$0\%$ representa rigorosamente a média bioclimática das pastagens do Sudeste**.
+* **Valores positivos ($>0\%$):** Indicam vantagem climática comparativa em relação à média regional.
+* **Valores negativos ($<0\%$):** Indicam desvantagem / penalidade climática em relação à média regional.
 
 ---
 
-# 3. As Escalas e as Ordens de Grandeza (Os Coeficientes $\beta$)
+# 4. As Escalas e as Ordens de Grandeza (Os Coeficientes $\beta$)
 
-Observe a magnitude dos coeficientes estruturais estimados no modelo econométrico (Nota Técnica):
+Observe os valores estimados:
 
-| Fator Climático | Coeficiente ($\beta$) | Erro-Padrão / Significância | Unidade da Variável |
-| :--- | :---: | :---: | :--- |
-| **Estresse Térmico (Calor)** | $\beta_{\text{calor}} = -0,00282$ | $t = -4,17 \quad (p < 0,001)$ | Dias/ano com $\text{ITU} > 79$ |
-| **Disponibilidade Hídrica (Chuva)** | $\beta_{\text{chuva}} = +0,000117$ | $t = +2,13 \quad (p < 0,05)$ | $\text{mm/ano}$ acumulados |
+* $\beta_{\text{calor}} = -0,00282$
+* $\beta_{\text{chuva}} = +0,000117$
 
-À primeira vista, parece que o efeito do calor é muito maior do que o da chuva porque $|-0,00282| > 0,000117$. Mas aqui entra a **escala das grandezas físicas**:
+A disparidade na magnitude dos coeficientes deve-se à **unidade física de cada variável**:
 
 ### A. A Escala do Calor ($R_{\text{ITU}}$)
-
 * **Unidade:** Dias no ano com Índice de Temperatura e Umidade crítico ($\text{ITU} > 79$).
-* **Faixa de variação:** Varia de cerca de $0$ dias/ano (nas montanhas do Sul de MG e Mantiqueira) até mais de $160$ dias/ano (no Norte de MG e Noroeste de SP). A amplitude regional é de cerca de $150$ dias.
-* **Impacto isolado no expoente:**
-  Se um local tem $50$ dias a mais de estresse térmico que a média regional ($\Delta \text{ITU} = +50$):
+* **Amplitude de variação:** Varia de cerca de $0$ dias/ano (zonas serranas do Sul de MG e Mantiqueira) até mais de $160$ dias/ano (Norte de MG e Noroeste paulista). A amplitude é de cerca de $150$ dias.
+* **Impacto isolado no expoente (+50 dias de estresse):**
   $$\Delta \text{expoente}_{\text{calor}} = -0,00282 \times (+50) = -0,141$$
   $$\exp(-0,141) - 1 \approx -13,1\%$$
 
 ### B. A Escala da Chuva ($R_{\text{Chuva}}$)
-
 * **Unidade:** Milímetros de chuva acumulada ao ano ($\text{mm/ano}$).
-* **Faixa de variação:** No Sudeste, a precipitação anual varia tipicamente de $\approx 800\text{ mm}$ (semiárido/Norte mineiro) até $\approx 2.000\text{ mm}$ (zonas serranas e litoral), gerando desvios em relação à média de $\pm 500\text{ mm}$ ou mais.
-* **Impacto isolado no expoente:**
-  Se um local recebe $500\text{ mm}$ a mais de chuva que a média regional ($\Delta \text{Chuva} = +500$):
+* **Amplitude de variação:** No Sudeste, varia de $\approx 800\text{ mm}$ (Norte mineiro) até $\approx 2.000\text{ mm}$ (litoral e serras), gerando desvios de $\pm 500\text{ mm}$ ou mais em relação à média.
+* **Impacto isolado no expoente (+500 mm de chuva):**
   $$\Delta \text{expoente}_{\text{chuva}} = +0,000117 \times (+500) = +0,0585$$
   $$\exp(+0,0585) - 1 \approx +6,0\%$$
 
 ::: {.callout-note}
-## ⚖️ Conclusão sobre as escalas físicas
-O coeficiente $\beta_{\text{chuva}}$ é menor na quarta casa decimal porque ele é multiplicado por centenas de milímetros, enquanto $\beta_{\text{calor}}$ multiplica dezenas de dias. Contudo, como o estresse térmico exerce forte peso biológico sobre o gado leiteiro, **nas regiões tórridas a penalidade do calor supera com folga o alívio que a chuva possa fornecer**.
+**Conclusão sobre a escala:** O coeficiente da chuva é menor na quarta casa decimal porque multiplica grandezas em centenas de milímetros, enquanto o calor multiplica dezenas de dias. Como o estresse fisiológico do calor é pronunciado, nas regiões de altas temperaturas a penalidade térmica supera expressivamente o efeito mitigador da precipitação.
 :::
 
 ---
 
-# 4. Como esse cálculo se comporta na prática (Dois exemplos reais)
+# 5. Comportamento Espacial e Aplicação Prática
 
-Para mostrar ao seu orientador como o pixel adquire sua tonalidade no mapa e no QGIS, analisemos dois locais contrastantes do Sudeste:
+Abaixo visualiza-se a correspondência espacial entre a ocorrência de calor crítico e o balanço climático final projetado pela Equação 3:
 
-![Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Dias em estresse crítico (ITU > 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.](assets/images/figura_1_zoneamento.png){#fig-zoneamento width=85% fig-align="center"}
+![Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Frequência anual de dias em estresse crítico (ITU > 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.](assets/images/figura_1_zoneamento.png){#fig-zoneamento width=85% fig-align="center"}
 
 ::: {.scenario-grid}
 
@@ -143,61 +169,57 @@ Para mostrar ao seu orientador como o pixel adquire sua tonalidade no mapa e no 
 #### 🔴 Cenário 1: Norte de Minas Gerais
 **Região de Penalidade Severa (Tom Vermelho no Mapa)**
 
-* **Condições Climáticas:**
-  * $\Delta \text{ITU} = +70\text{ dias}$ acima da média regional
-  * $\Delta \text{Chuva} = -300\text{ mm}$ abaixo da média regional
+* **Clima:** Região com $\Delta \text{ITU} = +70\text{ dias}$ acima da média e déficit de precipitação de $\Delta \text{Chuva} = -300\text{ mm}$ abaixo da média.
 * **Cálculo da variação do log:**
   $$\Delta \log(Y) = (-0,00282 \times 70) + (0,000117 \times (-300))$$
   $$\Delta \log(Y) = -0,1974 - 0,0351 = -0,2325$$
 * **Impacto Percentual Final:**
   $$\Delta\% = (\exp(-0,2325) - 1) \times 100 \approx -20,75\%$$
-* **Resultado Cartográfico:** Como o valor é de **$\approx -21\%$**, o pixel recebe tonalidade vermelha intensa (forte penalidade climática sobre o rendimento das vacas).
+* **Comportamento Cartográfico:** Pixel adquire tom vermelho intenso, assinalando perda de produtividade superior a $20\%$ em relação à média regional.
 :::
 
 ::: {.scenario-card .scenario-blue}
-#### 🔵 Cenário 2: Sul de Minas / Mantiqueira
+#### 🔵 Cenário 2: Sul de Minas / Serra da Mantiqueira
 **Região de Refúgio Térmico (Tom Azul no Mapa)**
 
-* **Condições Climáticas:**
-  * $\Delta \text{ITU} = -40\text{ dias}$ (praticamente isento de calor crítico)
-  * $\Delta \text{Chuva} = +200\text{ mm}$ acima da média regional
+* **Clima:** Altitude elevada com $\Delta \text{ITU} = -40\text{ dias}$ (praticamente nulo) e $\Delta \text{Chuva} = +200\text{ mm}$ acima da média.
 * **Cálculo da variação do log:**
   $$\Delta \log(Y) = (-0,00282 \times (-40)) + (0,000117 \times 200)$$
   $$\Delta \log(Y) = +0,1128 + 0,0234 = +0,1362$$
 * **Impacto Percentual Final:**
   $$\Delta\% = (\exp(0,1362) - 1) \times 100 \approx +14,59\%$$
-* **Resultado Cartográfico:** Como o valor é **$+14,6\%$**, o pixel fica destacado em azul (vantagem produtiva decorrente do conforto bioclimático).
+* **Comportamento Cartográfico:** Pixel adquire tom azul, representando ganho relativo de produtividade de quase $15\%$ frente à média das pastagens do Sudeste.
 :::
 
 :::
 
 ---
 
-# 4.1 Implementação Vetorizada em Python
+# 6. Implementação Vetorizada em Python
 
-No ambiente de pesquisa, o cálculo da Equação 3 é executado em matrizes contínuas com **Python** (`numpy` e `rasterio`). O código opera diretamente sobre as células mascaradas de pastagem:
+A rotina computacional em **Python** realiza a álgebra de mapas sobre a máscara estrita da Coleção 9 do MapBiomas:
 
 ```python
 import numpy as np
 import rasterio
 
-# Parâmetros estruturais estimados no modelo econométrico
+# Coeficientes do modelo econométrico
 BETA_CALOR = -0.00282
 BETA_CHUVA = +0.000117
 
-# Leitura das matrizes raster
+# Carregamento dos rasters contínuos
 with rasterio.open("itu_inmet_anual_3km.tif") as src_itu, \
      rasterio.open("chuva_uniplu_anual.tif") as src_chuva, \
      rasterio.open("mascara_pastagem_mapbiomas.tif") as src_mask:
     
     mat_itu = src_itu.read(1)
     mat_chuva = src_chuva.read(1)
-    mask_pastagem = src_mask.read(1) == 15  # Classe 15: Pastagem
+    mask_pastagem = src_mask.read(1) == 15  # Classe 15: Pastagem (MapBiomas Col 9)
 
-# Validação de dados finitos sobre as pastagens
+# Validação e mascaramento estrito
 valid = mask_pastagem & np.isfinite(mat_itu) & np.isfinite(mat_chuva)
 
-# Cálculo centrado na média das pastagens do Sudeste
+# Médias regionais das pastagens do Sudeste
 media_itu = np.mean(mat_itu[valid])
 media_chuva = np.mean(mat_chuva[valid])
 
@@ -205,18 +227,14 @@ media_chuva = np.mean(mat_chuva[valid])
 d_log = (BETA_CALOR * (mat_itu[valid] - media_itu)) + \
         (BETA_CHUVA * (mat_chuva[valid] - media_chuva))
 
-# Conversão exponencial para taxa percentual (%)
+# Conversão percentual relativa
 liq_pct = np.full(mat_itu.shape, np.nan, dtype=np.float32)
 liq_pct[valid] = (np.exp(d_log) - 1.0) * 100.0
-
-print(f"Balanço Climático Médio: {np.mean(liq_pct[valid]):.2f}%")
 ```
 
 ---
 
-# 5. Resumo em 3 Frases para dizer ao seu Orientador
-
-Ao gravar seu vídeo ou conduzir sua reunião de orientação, use este roteiro conciso para sintetizar todo o trabalho:
+# 7. Resumo em 3 Frases para o Orientador
 
 ::: {.summary-sentence}
 **1.** *"Cada pixel deste raster é o resultado de uma função exponencial que converte a elasticidade do modelo econométrico numa taxa percentual direta."*
@@ -228,9 +246,4 @@ Ao gravar seu vídeo ou conduzir sua reunião de orientação, use este roteiro 
 
 ::: {.summary-sentence}
 **3.** *"O modelo pondera os dois fatores simultaneamente: cada dia a mais de estresse térmico drena cerca de 0,28% da produtividade diária por vaca, enquanto a disponibilidade hídrica atua como amenizadora."*
-:::
-
-::: {.callout-tip collapse="true"}
-## 🎬 Sugestão de Fechamento do Vídeo
-> *"Professor, com essa formulação conseguimos transpor um modelo econométrico de painel para uma matriz geográfica contínua de alta precisão. Na próxima etapa, aplicamos essa taxa sobre a produtividade base municipal para quantificar a perda física real em litros de leite por vaca ao ano."*
 :::
