@@ -1,4 +1,4 @@
-/* Estilos customizados para o Relatório Didático de Apresentação */
+/* Estilos customizados para o Relatório Técnico */
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -18,82 +18,99 @@ h1.title {
   margin-bottom: 24px;
 }
 
-/* Caixas de destaque dos cenários */
+/* Grid de Cenários Contrastantes */
 .scenario-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 20px;
-  margin: 25px 0;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 30px 0;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .scenario-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .scenario-card {
   border-radius: 8px;
-  padding: 20px 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  border-left: 6px solid #ccc;
-  background-color: #ffffff;
+  padding: 20px 22px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  min-width: 0; /* Previne que o conteúdo force overflow no CSS grid */
+  overflow-x: auto; /* Garante que qualquer expressão ampla tenha rolagem se necessário */
 }
 
 .scenario-red {
-  border-left-color: #e53e3e;
-  background: linear-gradient(180deg, #fff5f5 0%, #ffffff 100%);
-  border: 1px solid #fed7d7;
-  border-left: 6px solid #e53e3e;
+  background: #fffafa;
+  border: 1px solid #feb2b2;
+  border-top: 5px solid #e53e3e;
 }
 
 .scenario-blue {
-  border-left-color: #3182ce;
-  background: linear-gradient(180deg, #ebf8ff 0%, #ffffff 100%);
+  background: #f7fafc;
   border: 1px solid #bee3f8;
-  border-left: 6px solid #3182ce;
+  border-top: 5px solid #3182ce;
 }
 
-.scenario-card h4 {
-  margin-top: 0;
-  margin-bottom: 12px;
-  font-size: 1.25rem;
+/* Títulos dentro dos cartões de cenário (sem numeração indesejada) */
+.scenario-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.scenario-red h4 {
-  color: #c53030;
+.scenario-red .scenario-title {
+  color: #9b2c2c;
 }
 
-.scenario-blue h4 {
+.scenario-blue .scenario-title {
   color: #2b6cb0;
 }
 
-/* Cartões de parâmetros */
-.stat-card {
-  background-color: #f7fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 16px;
+.scenario-subtitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.scenario-red .scenario-subtitle {
+  color: #c53030;
+}
+
+.scenario-blue .scenario-subtitle {
+  color: #2b6cb0;
+}
+
+/* Formatação matemática dentro dos cards para evitar quebras estranhas */
+.scenario-card .math-step {
+  background-color: rgba(255, 255, 255, 0.85);
+  border-radius: 6px;
+  padding: 10px 12px;
+  margin: 10px 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  overflow-x: auto;
+  font-size: 0.95rem;
+}
+
+.scenario-card ul {
+  padding-left: 20px;
+  margin-bottom: 12px;
+}
+
+.scenario-card li {
+  margin-bottom: 6px;
 }
 
 /* Destaque para fórmulas matemáticas */
 .math-display {
   padding: 10px 0;
   overflow-x: auto;
-}
-
-/* Dicas de apresentação para o vídeo */
-.video-tip {
-  background-color: #fefcbf;
-  border-left: 4px solid #d69e2e;
-  padding: 12px 18px;
-  border-radius: 4px;
-  margin: 15px 0;
-  font-size: 0.95rem;
-}
-
-/* Frases de resumo destacadas */
-.summary-sentence {
-  background-color: #edf2f7;
-  border-left: 4px solid #4a5568;
-  padding: 14px 18px;
-  margin: 12px 0;
-  border-radius: 4px;
-  font-size: 1.05rem;
-  font-style: italic;
 }
