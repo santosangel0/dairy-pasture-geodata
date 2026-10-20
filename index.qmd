@@ -207,11 +207,31 @@ O coeficiente da chuva é menor na quarta casa decimal porque atua sobre centena
 
 ---
 
-# 5. Aplicação Prática e Zoneamento Espacial
+# 5. Aplicação Prática e Análise por Mesorregiões
 
-A correspondência espacial entre a incidência de calor crítico e o balanço líquido estimado pela Equação 3 evidencia o contraste regional no Sudeste:
+A aplicação da Equação 3 sobre as matrizes geoespaciais permite sintetizar o impacto bioclimático nas **37 mesorregiões do Sudeste brasileiro**. Em substituição a mapas estáticos, os painéis interativos abaixo permitem inspecionar detalhadamente o balanço líquido, a incidência de estresse térmico e a perda física de leite em cada região:
 
-![Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Frequência anual de dias em estresse crítico (ITU > 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.](assets/images/figura_1_zoneamento.png){#fig-zoneamento width=85% fig-align="center"}
+::: {.panel-tabset}
+
+## 📊 Ranking do Balanço Líquido (Δ%)
+
+::: {.highcharts-container-box}
+<div id="chart-ranking-mesorregioes"></div>
+:::
+
+## 🌡️ Estresse Térmico vs. Impacto Líquido
+
+::: {.highcharts-container-box}
+<div id="chart-scatter-calor"></div>
+:::
+
+## 🥛 Volume de Leite Perdido (L/vaca)
+
+::: {.highcharts-container-box}
+<div id="chart-perda-absoluta"></div>
+:::
+
+:::
 
 ::: {.scenario-grid}
 
@@ -237,7 +257,7 @@ $$\begin{aligned}
 \end{aligned}$$
 :::
 
-* **Comportamento no Raster:** Valor de **$\approx -21\%$**, conferindo ao pixel coloração vermelha escura (severa perda de rendimento por estresse térmico somado a déficit hídrico).
+* **Comportamento no Modelo:** Valor de **$\approx -21\%$** nos pixels mais quentes (e média mesorregional de $-7,84\%$), indicando severa perda de rendimento por estresse térmico somado a déficit hídrico.
 :::
 
 ::: {.scenario-card .scenario-blue}
@@ -262,7 +282,7 @@ $$\begin{aligned}
 \end{aligned}$$
 :::
 
-* **Comportamento no Raster:** Valor de **$+14,6\%$**, conferindo ao pixel coloração azulada (vantagem bioclimática líquida para produção leiteira a pasto).
+* **Comportamento no Modelo:** Valor de **$+14,6\%$** (e média mesorregional de $+15,88\%$), representando expressiva vantagem bioclimática líquida para produção leiteira a pasto.
 :::
 
 :::

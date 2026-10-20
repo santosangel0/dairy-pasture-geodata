@@ -18,6 +18,16 @@ h1.title {
   margin-bottom: 24px;
 }
 
+/* Contêiner dos Gráficos Interativos Highcharts */
+.highcharts-container-box {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 18px 0 26px 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
 /* Grid de Cenários Contrastantes */
 .scenario-grid {
   display: grid;
@@ -37,8 +47,8 @@ h1.title {
   border-radius: 8px;
   padding: 20px 22px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
-  min-width: 0; /* Previne que o conteúdo force overflow no CSS grid */
-  overflow-x: auto; /* Garante que qualquer expressão ampla tenha rolagem se necessário */
+  min-width: 0;
+  overflow-x: auto;
 }
 
 .scenario-red {
@@ -53,7 +63,7 @@ h1.title {
   border-top: 5px solid #3182ce;
 }
 
-/* Títulos dentro dos cartões de cenário (sem numeração indesejada) */
+/* Títulos dentro dos cartões de cenário */
 .scenario-title {
   font-size: 1.2rem;
   font-weight: 700;
@@ -89,7 +99,7 @@ h1.title {
   color: #2b6cb0;
 }
 
-/* Formatação matemática dentro dos cards para evitar quebras estranhas */
+/* Formatação matemática dentro dos cards */
 .scenario-card .math-step {
   background-color: rgba(255, 255, 255, 0.85);
   border-radius: 6px;

@@ -22,8 +22,9 @@ format:
     css: styles.css
     toc: true
     toc-depth: 3
-    toc-title: "Nesta Apresentação"
+    toc-title: "Sumário do Relatório"
     number-sections: true
     smooth-scroll: true
     code-copy: true
     html-math-method: mathjax
+    include-in-header: assets/highcharts-header.html

@@ -1,0 +1,16 @@
+[project]
+name = "dairy-pasture-geodata"
+version = "0.1.0"
+description = "Projeção espacial do modelo bioclimático de produtividade leiteira no Sudeste"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=2.0.0",
+    "pandas>=2.0.0",
+    "polars>=1.0.0",
+    "pyarrow>=15.0.0",
+    "rasterio>=1.3.0",
+    "shapely>=2.0.0",
+]
+
+[tool.uv]
+managed = true

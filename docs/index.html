@@ -104,6 +104,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 <style>html{ scroll-behavior: smooth; }</style>
+<!-- Highcharts CDN Scripts e Módulos -->
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<!-- Script customizado com dados das 37 mesorregiões -->
+<script src="assets/highcharts-mesorregioes.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -211,7 +219,7 @@ window.Quarto = {
   <li><a href="#a.-escala-do-calor-r_textitu" id="toc-a.-escala-do-calor-r_textitu" class="nav-link" data-scroll-target="#a.-escala-do-calor-r_textitu"><span class="header-section-number">4.0.1</span> A. Escala do Calor (<span class="math inline">\(R_{\text{ITU}}\)</span>)</a></li>
   <li><a href="#b.-escala-da-chuva-r_textchuva" id="toc-b.-escala-da-chuva-r_textchuva" class="nav-link" data-scroll-target="#b.-escala-da-chuva-r_textchuva"><span class="header-section-number">4.0.2</span> B. Escala da Chuva (<span class="math inline">\(R_{\text{Chuva}}\)</span>)</a></li>
   </ul></li>
-  <li><a href="#aplicação-prática-e-zoneamento-espacial" id="toc-aplicação-prática-e-zoneamento-espacial" class="nav-link" data-scroll-target="#aplicação-prática-e-zoneamento-espacial"><span class="header-section-number">5</span> 5. Aplicação Prática e Zoneamento Espacial</a></li>
+  <li><a href="#aplicação-prática-e-análise-por-mesorregiões" id="toc-aplicação-prática-e-análise-por-mesorregiões" class="nav-link" data-scroll-target="#aplicação-prática-e-análise-por-mesorregiões"><span class="header-section-number">5</span> 5. Aplicação Prática e Análise por Mesorregiões</a></li>
   <li><a href="#implementação-vetorizada-em-python" id="toc-implementação-vetorizada-em-python" class="nav-link" data-scroll-target="#implementação-vetorizada-em-python"><span class="header-section-number">6</span> 6. Implementação Vetorizada em Python</a></li>
   </ul>
 </nav>
@@ -462,18 +470,34 @@ Note
 <hr>
 </section>
 </section>
-<section id="aplicação-prática-e-zoneamento-espacial" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> 5. Aplicação Prática e Zoneamento Espacial</h1>
-<p>A correspondência espacial entre a incidência de calor crítico e o balanço líquido estimado pela Equação 3 evidencia o contraste regional no Sudeste:</p>
-<div id="fig-zoneamento" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-zoneamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="assets/images/figura_1_zoneamento.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%">
+<section id="aplicação-prática-e-análise-por-mesorregiões" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5. Aplicação Prática e Análise por Mesorregiões</h1>
+<p>A aplicação da Equação 3 sobre as matrizes geoespaciais permite sintetizar o impacto bioclimático nas <strong>37 mesorregiões do Sudeste brasileiro</strong>. Em substituição a mapas estáticos, os painéis interativos abaixo permitem inspecionar detalhadamente o balanço líquido, a incidência de estresse térmico e a perda física de leite em cada região:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">📊 Ranking do Balanço Líquido (Δ%)</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">🌡️ Estresse Térmico vs.&nbsp;Impacto Líquido</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">🥛 Volume de Leite Perdido (L/vaca)</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="highcharts-container-box">
+<div id="chart-ranking-mesorregioes">
+
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-zoneamento-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Zoneamento do Estresse Térmico e Impacto na Produtividade Leiteira do Sudeste (Nota Técnica, 2026). Painel A: Frequência anual de dias em estresse crítico (ITU &gt; 79). Painel B: Balanço Climático Líquido (%) resultante da Equação 3.
-</figcaption>
-</figure>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="highcharts-container-box">
+<div id="chart-scatter-calor">
+
+</div>
+</div>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="highcharts-container-box">
+<div id="chart-perda-absoluta">
+
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="scenario-grid">
 <div class="scenario-card scenario-red">
@@ -503,7 +527,7 @@ Região de Penalidade Severa (Tom Vermelho)
 \end{aligned}\]</span></p>
 </div>
 <ul>
-<li><strong>Comportamento no Raster:</strong> Valor de <strong><span class="math inline">\(\approx -21\%\)</span></strong>, conferindo ao pixel coloração vermelha escura (severa perda de rendimento por estresse térmico somado a déficit hídrico).</li>
+<li><strong>Comportamento no Modelo:</strong> Valor de <strong><span class="math inline">\(\approx -21\%\)</span></strong> nos pixels mais quentes (e média mesorregional de <span class="math inline">\(-7,84\%\)</span>), indicando severa perda de rendimento por estresse térmico somado a déficit hídrico.</li>
 </ul>
 </div>
 <div class="scenario-card scenario-blue">
@@ -533,7 +557,7 @@ Região de Refúgio Térmico (Tom Azul)
 \end{aligned}\]</span></p>
 </div>
 <ul>
-<li><strong>Comportamento no Raster:</strong> Valor de <strong><span class="math inline">\(+14,6\%\)</span></strong>, conferindo ao pixel coloração azulada (vantagem bioclimática líquida para produção leiteira a pasto).</li>
+<li><strong>Comportamento no Modelo:</strong> Valor de <strong><span class="math inline">\(+14,6\%\)</span></strong> (e média mesorregional de <span class="math inline">\(+15,88\%\)</span>), representando expressiva vantagem bioclimática líquida para produção leiteira a pasto.</li>
 </ul>
 </div>
 </div>

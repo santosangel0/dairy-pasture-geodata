@@ -2,7 +2,7 @@
 # requires-python = ">=3.10"
 # ///
 """Baixa a malha vetorial oficial das Mesorregiões do Sudeste do IBGE
-e enriquece cada polígono com seu respectivo Nome e UF.
+e enriquece cada polígono com seu respectivo Nome e UF (com acentuação correta).
 """
 import gzip
 import json
@@ -26,7 +26,12 @@ def main():
         raw = r.read()
         if raw[:2] == b"\x1f\x8b":
             raw = gzip.decompress(raw)
-        meso_meta = {str(item["id"]): item for item in json.loads(raw.decode("utf-8"))}
+        # IBGE retorna latin1 nesta rota
+        try:
+            decoded = raw.decode("latin1")
+        except Exception:
+            decoded = raw.decode("utf-8")
+        meso_meta = {str(item["id"]): item for item in json.loads(decoded)}
     print(f"   Metadados obtidos para {len(meso_meta)} mesorregiões.")
 
     # 2. Malha Geográfica (GeoJSON)
@@ -52,7 +57,7 @@ def main():
             props["uf_sigla"] = meta.get("UF", {}).get("sigla")
             props["uf_nome"] = meta.get("UF", {}).get("nome")
 
-    # 4. Salva o arquivo final
+    # 4. Salva o arquivo final em UTF-8
     with open(OUT_FILE, "w", encoding="utf-8") as f:
         json.dump(geojson_data, f, ensure_ascii=False, indent=2)
 
