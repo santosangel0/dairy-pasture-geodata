@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {{
                             <div style="font-size: 0.9rem; line-height: 1.6; color: #2d3748;">
                                 • <b>Calor Crítico (&gt;79 ITU):</b> ${{p.itu}} dias/ano<br/>
                                 • <b>Precipitação Anual:</b> ${{p.chuva}} mm/ano<br/>
-                                • <b>Perda Física Estimada:</b> ${{p.perda}} L/vaca/ano<br/>
+                                • <b>Perda Térmica (vs. estresse zero):</b> ${{p.perda}} L/vaca/ano<br/>
                                 • <b>Produtividade Base:</b> ${{p.prod}} L/vaca/ano
                             </div>
                         </div>
@@ -314,9 +314,9 @@ document.addEventListener('DOMContentLoaded', function () {{
                 borderWidth: 0.75,
                 states: {{
                     hover: {{
-                        color: '#f6e05e',
+                        color: '#ffffff',
                         borderColor: '#1a365d',
-                        borderWidth: 2
+                        borderWidth: 2.5
                     }}
                 }},
                 // Rótulos estáticos desativados conforme solicitado: o nome aparece no hover/toque

@@ -241,6 +241,14 @@ Para oferecer uma exploração elegante e intuitiva, a distribuição espacial e
 
 :::
 
+::: {.callout-note}
+## 💡 Entendendo os Dois Indicadores: Por que há "Perda Física" mesmo com Balanço Positivo (Azul)?
+Um ponto fundamental para esclarecer ao orientador é a distinção de referência entre a **taxa percentual relativa** e o **volume físico absoluto**:
+
+1. **Balanço Climático Líquido ($\Delta\%_{\text{líquido}}$ - Equação 3):** É uma métrica **relativa à média regional das pastagens do Sudeste** ($\overline{\text{ITU}} \approx 52\text{ dias/ano}$). As mesorregiões em azul (como o Sul de Minas, com apenas ~16 dias de calor crítico) apresentam balanço positivo ($+15,9\%$) porque desfrutam de um refúgio bioclimático substancialmente mais ameno que a média do Sudeste.
+2. **Perda Física Estimada ($\text{L/vaca/ano}$ - Equação 4):** É uma métrica **absoluta frente ao contrafactual biológico de estresse zero** ($R_{\text{ITU}} = 0$ dias críticos, ou seja, conforto térmico pleno os 365 dias do ano). Como mesmo nas serras do Sul de Minas ou Mantiqueira ocorrem cerca de 12 a 16 dias no auge do verão com $\text{ITU} > 79$, o rebanho sofre estresse agudo nessas ocasiões, deixando de produzir $\approx 100\text{ L/vaca/ano}$ em relação a um hipotético ano 100% fresco.
+:::
+
 ::: {.scenario-grid}
 
 ::: {.scenario-card .scenario-red}
