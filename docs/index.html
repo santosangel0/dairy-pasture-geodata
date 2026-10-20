@@ -190,6 +190,13 @@ window.Quarto = {
   <li><a href="#intercepto-de-município-alpha_i---efeito-fixo-municipal" id="toc-intercepto-de-município-alpha_i---efeito-fixo-municipal" class="nav-link" data-scroll-target="#intercepto-de-município-alpha_i---efeito-fixo-municipal"><span class="header-section-number">1.1.1</span> 1. Intercepto de Município (<span class="math inline">\(\alpha_i\)</span> - Efeito Fixo Municipal)</a></li>
   <li><a href="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" id="toc-intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano" class="nav-link" data-scroll-target="#intercepto-de-tempo-gamma_t---efeito-fixo-temporal-ano"><span class="header-section-number">1.1.2</span> 2. Intercepto de Tempo (<span class="math inline">\(\gamma_t\)</span> - Efeito Fixo Temporal / Ano)</a></li>
   </ul></li>
+  <li><a href="#dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" id="toc-dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" class="nav-link" data-scroll-target="#dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional"><span class="header-section-number">1.2</span> Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional</a>
+  <ul class="collapse">
+  <li><a href="#a.-definição-das-variáveis-e-unidades-físicas" id="toc-a.-definição-das-variáveis-e-unidades-físicas" class="nav-link" data-scroll-target="#a.-definição-das-variáveis-e-unidades-físicas"><span class="header-section-number">1.2.1</span> A. Definição das Variáveis e Unidades Físicas</a></li>
+  <li><a href="#b.-a-derivada-absoluta-a-taxa-linear" id="toc-b.-a-derivada-absoluta-a-taxa-linear" class="nav-link" data-scroll-target="#b.-a-derivada-absoluta-a-taxa-linear"><span class="header-section-number">1.2.2</span> B. A Derivada Absoluta (A Taxa Linear)</a></li>
+  <li><a href="#c.-a-aplicação-da-regra-da-cadeia-e-a-eliminação-da-dimensão-de-volume" id="toc-c.-a-aplicação-da-regra-da-cadeia-e-a-eliminação-da-dimensão-de-volume" class="nav-link" data-scroll-target="#c.-a-aplicação-da-regra-da-cadeia-e-a-eliminação-da-dimensão-de-volume"><span class="header-section-number">1.2.3</span> C. A Aplicação da Regra da Cadeia e a Eliminação da Dimensão de Volume</a></li>
+  <li><a href="#d.-conexão-com-o-coeficiente-do-modelo-beta_textcalor" id="toc-d.-conexão-com-o-coeficiente-do-modelo-beta_textcalor" class="nav-link" data-scroll-target="#d.-conexão-com-o-coeficiente-do-modelo-beta_textcalor"><span class="header-section-number">1.2.4</span> D. Conexão com o Coeficiente do Modelo (<span class="math inline">\(\beta_{\text{calor}}\)</span>)</a></li>
+  </ul></li>
   </ul></li>
   <li><a href="#fontes-de-dados-escalas-e-resoluções-espaciais" id="toc-fontes-de-dados-escalas-e-resoluções-espaciais" class="nav-link" data-scroll-target="#fontes-de-dados-escalas-e-resoluções-espaciais"><span class="header-section-number">2</span> 2. Fontes de Dados, Escalas e Resoluções Espaciais</a>
   <ul class="collapse">
@@ -289,7 +296,67 @@ Note
 <p><strong>Importância:</strong> O intercepto <span class="math inline">\(\gamma_t\)</span> garante que choques econômicos globais não contaminem os parâmetros de resposta às oscilações climáticas.</p>
 </div>
 </div>
-<p>Como os efeitos fixos (<span class="math inline">\(\alpha_i\)</span> e <span class="math inline">\(\gamma_t\)</span>) eliminam essas variáveis de confusão, os coeficientes <span class="math inline">\(\beta_{\text{calor}}\)</span> e <span class="math inline">\(\beta_{\text{chuva}}\)</span> representam a <strong>sensibilidade marginal climática direta</strong>, permitindo sua projeção geográfica contínua sobre as pastagens.</p>
+<p>Como os efeitos fixos (<span class="math inline">\(\alpha_i\)</span> e <span class="math inline">\(\gamma_t\)</span>) eliminam essas variáveis de confusão, os coeficientes <span class="math inline">\(\beta_{\text{calor}}\)</span> e <span class="math inline">\(\beta_{\text{chuva}}\)</span> representam a <strong>sensibilidade marginal climática direta</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="dedução-rigorosa-dos-betas-regra-da-cadeia-e-análise-dimensional"><span class="header-section-number">1.2</span> Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional</h2>
+<p>Para compreender com exatidão a natureza dos coeficientes <span class="math inline">\(\beta\)</span>, recorre-se à dedução via <strong>Regra da Cadeia</strong> incorporando explicitamente a <strong>análise dimensional</strong>, demonstrando exatamente em que ponto a unidade física da produtividade é cancelada:</p>
+<section id="a.-definição-das-variáveis-e-unidades-físicas" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="a.-definição-das-variáveis-e-unidades-físicas"><span class="header-section-number">1.2.1</span> A. Definição das Variáveis e Unidades Físicas</h3>
+<ul>
+<li><p>Seja <span class="math inline">\(X\)</span> a variável ambiental de estresse térmico: <span class="math display">\[[X] = \text{dias de ITU}\]</span></p></li>
+<li><p>Seja <span class="math inline">\(Y(X)\)</span> a produtividade média de leite em função do calor: <span class="math display">\[[Y] = \frac{\text{L}}{\text{vaca} \cdot \text{ano}}\]</span></p></li>
+</ul>
+</section>
+<section id="b.-a-derivada-absoluta-a-taxa-linear" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="b.-a-derivada-absoluta-a-taxa-linear"><span class="header-section-number">1.2.2</span> B. A Derivada Absoluta (A Taxa Linear)</h3>
+<p>Se derivarmos diretamente a produtividade física <span class="math inline">\(Y\)</span> em relação a <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[\frac{dY}{dX} = \lim_{\Delta X \to 0} \frac{Y(X + \Delta X) - Y(X)}{\Delta X}\]</span></p>
+<p>Olhando estritamente para as unidades físicas:</p>
+<p><span class="math display">\[\left[ \frac{dY}{dX} \right] = \frac{[Y]}{[X]} = \frac{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}{\text{dias de ITU}} = \frac{\text{L}}{\text{vaca} \cdot \text{ano} \cdot \text{dias de ITU}}\]</span></p>
+<p>Esta derivada mede a <strong>perda absoluta em volume de leite</strong> por cada dia adicional de estresse térmico.</p>
+</section>
+<section id="c.-a-aplicação-da-regra-da-cadeia-e-a-eliminação-da-dimensão-de-volume" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="c.-a-aplicação-da-regra-da-cadeia-e-a-eliminação-da-dimensão-de-volume"><span class="header-section-number">1.2.3</span> C. A Aplicação da Regra da Cadeia e a Eliminação da Dimensão de Volume</h3>
+<p>Definimos a função composta <span class="math inline">\(z(X) = \log(Y(X))\)</span>.</p>
+<p>Pela <strong>Regra da Cadeia</strong>:</p>
+<p><span class="math display">\[\frac{d}{dX} [\log(Y(X))] = \frac{1}{Y(X)} \cdot \frac{dY(X)}{dX}\]</span></p>
+<p>Analisemos agora a dimensionalidade de cada termo do produto:</p>
+<p><span class="math display">\[\left[ \frac{1}{Y(X)} \cdot \frac{dY(X)}{dX} \right] = \underbrace{\frac{1}{\left(\frac{\text{L}}{\text{vaca} \cdot \text{ano}}\right)}}_{\left[\frac{1}{Y}\right]} \;\times\; \underbrace{\left(\frac{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}{\text{dias de ITU}}\right)}_{\left[\frac{dY}{dX}\right]}\]</span></p>
+<p>Ao efetuar o produto:</p>
+<p><span class="math display">\[\frac{\cancel{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}}{\left(\cancel{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}\right) \cdot (\text{dias de ITU})} = \frac{1}{\text{dias de ITU}} = (\text{dias de ITU})^{-1}\]</span></p>
+<p>A unidade física de produção (<span class="math inline">\(\text{L}/(\text{vaca} \cdot \text{ano})\)</span>) <strong>cancela-se completamente</strong>, tornando o numerador adimensional (uma proporção pura).</p>
+</section>
+<section id="d.-conexão-com-o-coeficiente-do-modelo-beta_textcalor" class="level3" data-number="1.2.4">
+<h3 data-number="1.2.4" class="anchored" data-anchor-id="d.-conexão-com-o-coeficiente-do-modelo-beta_textcalor"><span class="header-section-number">1.2.4</span> D. Conexão com o Coeficiente do Modelo (<span class="math inline">\(\beta_{\text{calor}}\)</span>)</h3>
+<p>No modelo econométrico:</p>
+<p><span class="math display">\[\log(Y) = \dots + \beta_{\text{calor}} \cdot X + \dots\]</span></p>
+<p>Derivando ambos os lados em relação a <span class="math inline">\(X\)</span>:</p>
+<p><span class="math display">\[\frac{d[\log(Y)]}{dX} = \beta_{\text{calor}}\]</span></p>
+<p>Igualando com a expressão obtida pela Regra da Cadeia:</p>
+<p><span class="math display">\[\beta_{\text{calor}} = \frac{1}{Y} \cdot \frac{dY}{dX}\]</span></p>
+<p>A dimensionalidade de <span class="math inline">\(\beta_{\text{calor}}\)</span> é, portanto:</p>
+<p><span class="math display">\[[\beta_{\text{calor}}] = \frac{1}{\text{dias de ITU}} = (\text{dias de ITU})^{-1}\]</span></p>
+<p>Como estimado estruturalmente, <span class="math inline">\(\beta_{\text{calor}} = -0,00282\ (\text{dias de ITU})^{-1}\)</span>:</p>
+<ul>
+<li>A variação relativa da produtividade (<span class="math inline">\(\frac{dY/dX}{Y}\)</span>) é uma taxa proporcional de <span class="math inline">\(-0,00282\)</span> por dia crítico.</li>
+<li>Multiplicando por <span class="math inline">\(100\)</span>, obtém-se a semielasticidade em porcentagem por unidade da variável: <span class="math display">\[\mathbf{-0,282\% \text{ ao dia de ITU}}\]</span></li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Disponibilidade Hídrica (<span class="math inline">\(\beta_{\text{chuva}}\)</span>):</strong> O mesmo princípio dimensional se aplica à chuva: <span class="math inline">\([X_{\text{chuva}}] = \text{mm/ano} \implies [\beta_{\text{chuva}}] = (\text{mm/ano})^{-1}\)</span>. Multiplicando <span class="math inline">\(+0,000117\)</span> por <span class="math inline">\(100\)</span>, obtemos <span class="math inline">\(\mathbf{+0,0117\% \text{ por mm de chuva/ano}}\)</span> (ou seja, <span class="math inline">\(+1,17\%\)</span> para cada <span class="math inline">\(+100\text{ mm}\)</span> de chuva acumulada ao ano).</p>
+</div>
+</div>
 <hr>
 </section>
 </section>

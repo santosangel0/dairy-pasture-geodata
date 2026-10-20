@@ -49,7 +49,79 @@ O termo $\gamma_t$ representa um intercepto comum a todos os municípios em cada
 **Importância:** O intercepto $\gamma_t$ garante que choques econômicos globais não contaminem os parâmetros de resposta às oscilações climáticas.
 :::
 
-Como os efeitos fixos ($\alpha_i$ e $\gamma_t$) eliminam essas variáveis de confusão, os coeficientes $\beta_{\text{calor}}$ e $\beta_{\text{chuva}}$ representam a **sensibilidade marginal climática direta**, permitindo sua projeção geográfica contínua sobre as pastagens.
+Como os efeitos fixos ($\alpha_i$ e $\gamma_t$) eliminam essas variáveis de confusão, os coeficientes $\beta_{\text{calor}}$ e $\beta_{\text{chuva}}$ representam a **sensibilidade marginal climática direta**.
+
+---
+
+## Dedução Rigorosa dos Betas: Regra da Cadeia e Análise Dimensional
+
+Para compreender com exatidão a natureza dos coeficientes $\beta$, recorre-se à dedução via **Regra da Cadeia** incorporando explicitamente a **análise dimensional**, demonstrando exatamente em que ponto a unidade física da produtividade é cancelada:
+
+### A. Definição das Variáveis e Unidades Físicas
+
+* Seja $X$ a variável ambiental de estresse térmico:
+  $$[X] = \text{dias de ITU}$$
+
+* Seja $Y(X)$ a produtividade média de leite em função do calor:
+  $$[Y] = \frac{\text{L}}{\text{vaca} \cdot \text{ano}}$$
+
+### B. A Derivada Absoluta (A Taxa Linear)
+
+Se derivarmos diretamente a produtividade física $Y$ em relação a $X$:
+
+$$\frac{dY}{dX} = \lim_{\Delta X \to 0} \frac{Y(X + \Delta X) - Y(X)}{\Delta X}$$
+
+Olhando estritamente para as unidades físicas:
+
+$$\left[ \frac{dY}{dX} \right] = \frac{[Y]}{[X]} = \frac{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}{\text{dias de ITU}} = \frac{\text{L}}{\text{vaca} \cdot \text{ano} \cdot \text{dias de ITU}}$$
+
+Esta derivada mede a **perda absoluta em volume de leite** por cada dia adicional de estresse térmico.
+
+### C. A Aplicação da Regra da Cadeia e a Eliminação da Dimensão de Volume
+
+Definimos a função composta $z(X) = \log(Y(X))$.
+
+Pela **Regra da Cadeia**:
+
+$$\frac{d}{dX} [\log(Y(X))] = \frac{1}{Y(X)} \cdot \frac{dY(X)}{dX}$$
+
+Analisemos agora a dimensionalidade de cada termo do produto:
+
+$$\left[ \frac{1}{Y(X)} \cdot \frac{dY(X)}{dX} \right] = \underbrace{\frac{1}{\left(\frac{\text{L}}{\text{vaca} \cdot \text{ano}}\right)}}_{\left[\frac{1}{Y}\right]} \;\times\; \underbrace{\left(\frac{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}{\text{dias de ITU}}\right)}_{\left[\frac{dY}{dX}\right]}$$
+
+Ao efetuar o produto:
+
+$$\frac{\cancel{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}}{\left(\cancel{\frac{\text{L}}{\text{vaca} \cdot \text{ano}}}\right) \cdot (\text{dias de ITU})} = \frac{1}{\text{dias de ITU}} = (\text{dias de ITU})^{-1}$$
+
+A unidade física de produção ($\text{L}/(\text{vaca} \cdot \text{ano})$) **cancela-se completamente**, tornando o numerador adimensional (uma proporção pura).
+
+### D. Conexão com o Coeficiente do Modelo ($\beta_{\text{calor}}$)
+
+No modelo econométrico:
+
+$$\log(Y) = \dots + \beta_{\text{calor}} \cdot X + \dots$$
+
+Derivando ambos os lados em relação a $X$:
+
+$$\frac{d[\log(Y)]}{dX} = \beta_{\text{calor}}$$
+
+Igualando com a expressão obtida pela Regra da Cadeia:
+
+$$\beta_{\text{calor}} = \frac{1}{Y} \cdot \frac{dY}{dX}$$
+
+A dimensionalidade de $\beta_{\text{calor}}$ é, portanto:
+
+$$[\beta_{\text{calor}}] = \frac{1}{\text{dias de ITU}} = (\text{dias de ITU})^{-1}$$
+
+Como estimado estruturalmente, $\beta_{\text{calor}} = -0,00282\ (\text{dias de ITU})^{-1}$:
+
+* A variação relativa da produtividade ($\frac{dY/dX}{Y}$) é uma taxa proporcional de $-0,00282$ por dia crítico.
+* Multiplicando por $100$, obtém-se a semielasticidade em porcentagem por unidade da variável:
+  $$\mathbf{-0,282\% \text{ ao dia de ITU}}$$
+
+::: {.callout-note}
+**Disponibilidade Hídrica ($\beta_{\text{chuva}}$):** O mesmo princípio dimensional se aplica à chuva: $[X_{\text{chuva}}] = \text{mm/ano} \implies [\beta_{\text{chuva}}] = (\text{mm/ano})^{-1}$. Multiplicando $+0,000117$ por $100$, obtemos $\mathbf{+0,0117\% \text{ por mm de chuva/ano}}$ (ou seja, $+1,17\%$ para cada $+100\text{ mm}$ de chuva acumulada ao ano).
+:::
 
 ---
 
